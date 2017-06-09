@@ -1,0 +1,518 @@
+{
+    "tdms": [
+        {
+            "name": "Standard",
+            "title": "Standard",
+            "active": true,
+            "domaines": [
+                {
+                    "name": "GC",
+                    "title": "Génie civil",
+                    "checked": false,
+                    "active":true,
+                    "services": [
+                        {
+                            "name": "reseau_GC",
+                            "title": "Réseau GC",
+                            "url": "http://dvsgowsc04.rouen.francetelecom.fr/clusterqgis/projet_qgis/gc_poc?",
+                            "tileSize": [
+                                512,
+                                512
+                            ],
+                            "ratio": 1,
+                            "params": {
+                                "LAYERS": "",
+                                "FORMAT": "image/png; mode=8bit",
+                                "VERSION": "1.3.1",
+                                "transparent": true
+                            },
+                            "type": "Image",
+                            "sourceType": "ImageWMS",
+                            "opacity": 100,
+                            "zIndex": 110,
+                            "checked": true,
+                            "collapseIn": true,
+                            
+                            "children": [
+                                {
+                                    "name": "noeud_artere",
+                                    "title": "Noeud extrémité",
+                                    "minResolution": -1.3038534077068158e-13,
+                                    "maxResolution": 0.2800005600011201,
+                                    "checked": true,
+                                    "zIndex": 1,
+                                    "isLayer": true,
+                                    "legendUrl": "http://dvsgowsc06.rouen.francetelecom.fr/projet_qgis/gc_poc?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetLegendGraphic&LAYER=noeud_artere&FORMAT=image/png&STYLE=default&SLD_VERSION=1.1.0&LAYERTITLE=false&ITEMFONTSIZE=10 ",
+                                    "visible": false,
+                                    "parent": "reseau_GC",
+                                    "service": "reseau_GC"
+                                },
+                                {
+                                    "name": "artere",
+                                    "title": "Artère",
+                                    "minResolution": 0,
+                                    "maxResolution": 1.4002828005656016,
+                                    "checked": true,
+                                    "zIndex": 2,
+                                    "isLayer": true,
+                                    "legendUrl": "http://dvsgowsc06.rouen.francetelecom.fr/projet_qgis/gc_poc?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetLegendGraphic&LAYER=artere&FORMAT=image/png&STYLE=default&SLD_VERSION=1.1.0&LAYERTITLE=false&ITEMFONTSIZE=10 ",
+                                    "visible": false,
+                                    "parent": "reseau_GC",
+                                    "service": "reseau_GC"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "site_technique",
+                            "title": "Site technique",
+                            "url": "http://dvsgowsc04.rouen.francetelecom.fr/clusterqgis/projet_qgis/gc_poc?",
+                            "tileSize": [
+                                512,
+                                512
+                            ],
+                            "ratio":1,
+                            "params": {
+                                "LAYERS": "",
+                                "FORMAT": "image/png; mode=8bit",
+                                "VERSION": "1.3.1",
+                                "transparent": true
+                            },
+                            "type": "Image",
+                            "sourceType": "ImageWMS",
+                             "opacity": 100,
+                            "zIndex": 102,
+                            "checked": true,
+                            "collapseIn": true,
+                            "children": [
+                                {
+                                    "name": "appui",
+                                    "title": "Appui",
+                                    "minResolution": -1.3038534077068158e-13,
+                                    "maxResolution": 1.4000028000056004,
+                                    "checked": true,
+                                    "zIndex": 1,
+                                    "isLayer": true,
+                                    "legendUrl": "http://dvsgowsc06.rouen.francetelecom.fr/projet_qgis/gc_poc?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetLegendGraphic&LAYER=appui&FORMAT=image/png&STYLE=default&SLD_VERSION=1.1.0&LAYERTITLE=false&ITEMFONTSIZE=10 ",
+                                    "visible": false,
+                                    "parent": "site_technique",
+                                    "service": "site_technique"
+                                },
+                                {
+                                    "name": "chambre",
+                                    "title": "Chambre",
+                                    "minResolution": -1.3038534077068158e-13,
+                                    "maxResolution": 0.42280084560169134,
+                                    "zIndex": 2,
+                                    "isLayer": true,
+                                    "visible": false,
+                                    "legendUrl": "http://dvsgowsc06.rouen.francetelecom.fr/projet_qgis/gc_poc?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetLegendGraphic&LAYER=chambre&FORMAT=image/png&STYLE=default&SLD_VERSION=1.1.0&LAYERTITLE=false&ITEMFONTSIZE=10 ",
+                                    "checked": true,
+                                    "parent": "site_technique",
+                                    "service": "site_technique"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "name": "BD_parcellaire",
+                    "title": "BD parcellaire",
+                    "checked": false,
+                    "active":false,
+                    "services": [
+                        {
+                            "name": "reseau_routier",
+                            "title": "Réseau routier",
+                            "url": "http://dvsgowsc04.rouen.francetelecom.fr/clusterqgis/projet_qgis/carto_poc_simple?",
+                            "tileSize": [
+                                512,
+                                512
+                            ],
+                            "ratio":1,
+                            "params": {
+                                "LAYERS": "",
+                                "FORMAT": "image/png; mode=8bit",
+                                "VERSION": "1.3.1",
+                                "transparent": true
+                            },
+                            "type": "Image",
+                            "sourceType": "ImageWMS",
+                             "opacity": 100,
+                            "zIndex": 103,
+                            "checked": true,
+                            "collapseIn": true,
+                            "children": [
+                                {
+                                    "name": "route_primaire",
+                                    "title": "Route primaire",
+                                    "minResolution": 0.0002800005600011201,
+                                    "maxResolution": 140.00056000112005,
+                                    "checked": true,
+                                    "zIndex": 1,
+                                    "isLayer": true,
+                                    "legendUrl": "http://dvsgowsc05.rouen.francetelecom.fr/projet_qgis/carto_poc_simple?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetLegendGraphic&LAYER=route_primaire&FORMAT=image/png&STYLE=default&SLD_VERSION=1.1.0&LAYERTITLE=false&ITEMFONTSIZE=10 ",
+                                    "visible": false,
+                                    "parent": "reseau_routier",
+                                    "service": "reseau_routier"
+                                },
+                                {
+                                    "name": "route_secondaire",
+                                    "title": "Route secondaire",
+                                    "minResolution": 0.0002800005600011201,
+                                    "maxResolution": 0.8400016800033603,
+                                    "checked": true,
+                                    "zIndex": 2,
+                                    "isLayer": true,
+                                    "legendUrl": "http://dvsgowsc05.rouen.francetelecom.fr/projet_qgis/carto_poc_simple?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetLegendGraphic&LAYER=route_secondaire&FORMAT=image/png&STYLE=default&SLD_VERSION=1.1.0&LAYERTITLE=false&ITEMFONTSIZE=10 ",
+                                    "visible": false,
+                                    "parent": "reseau_routier",
+                                    "service": "reseau_routier"
+                                },
+                                {
+                                    "name": "chemin",
+                                    "title": "Chemin",
+                                    "minResolution": -1.3038534077068158e-13,
+                                    "maxResolution": 14.000028000056005,
+                                    "checked": true,
+                                    "zIndex": 3,
+                                    "isLayer": true,
+                                    "legendUrl": "http://dvsgowsc05.rouen.francetelecom.fr/projet_qgis/carto_poc_simple?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetLegendGraphic&LAYER=chemin&FORMAT=image/png&STYLE=default&SLD_VERSION=1.1.0&LAYERTITLE=false&ITEMFONTSIZE=10 ",
+                                    "visible": false,
+                                    "parent": "reseau_routier",
+                                    "service": "reseau_routier"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "contours_administratifs",
+                            "title": "Contours administratifs",
+                            "url": "http://dvsgowsc04.rouen.francetelecom.fr/clusterqgis/projet_qgis/carto_poc_simple?",
+                            "tileSize": [
+                                512,
+                                512
+                            ],
+                            "ratio":1,
+                            "params": {
+                                "LAYERS": "",
+                                "FORMAT": "image/png; mode=8bit",
+                                "VERSION": "1.3.1",
+                                "transparent": true
+                            },
+                            "type": "Image",
+                            "sourceType": "ImageWMS",
+                             "opacity": 100,
+                            "zIndex": 104,
+                            "checked": true,
+                            "collapseIn": true,
+                            "children": [
+                                {
+                                    "name": "commune_geofla",
+                                    "title": "Commune <1:15 001",
+                                    "minResolution": 4.200008400016801,
+                                    "maxResolution": 140.00028000056005,
+                                    "checked": true,
+                                    "zIndex": 1,
+                                    "isLayer": true,
+                                    "legendUrl": "http://dvsgowsc05.rouen.francetelecom.fr/projet_qgis/carto_poc_simple?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetLegendGraphic&LAYER=commune_geofla&FORMAT=image/png&STYLE=default&SLD_VERSION=1.1.0&LAYERTITLE=false&ITEMFONTSIZE=10 ",
+                                    "visible": true,
+                                    "parent": "contours_administratifs",
+                                    "service": "contours_administratifs"
+                                },
+                                {
+                                    "name": "region_geofla",
+                                    "title": "Region",
+                                    "minResolution": 0.0002800005600011201,
+                                    "maxResolution": 4.200008400016801,
+                                    "zIndex": 2,
+                                    "isLayer": true,
+                                    "visible": true,
+                                    "legendUrl": "http://dvsgowsc06.rouen.francetelecom.fr/projet_qgis/carto_poc_simple?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetLegendGraphic&LAYER=region_geofla&FORMAT=image/png&STYLE=default&SLD_VERSION=1.1.0&LAYERTITLE=false&ITEMFONTSIZE=10 ",
+                                    "checked": true,
+                                    "parent": "contours_administratifs"
+                                },
+                                {
+                                    "name": "layergroupe1",
+                                    "title": "Layer Groupe 1",
+                                    "isLayer": false,
+                                    "checked": false,
+                                    "collapseIn": true,
+                                    "parent": "contours_administratifs",
+                                    "service": "contours_administratifs",
+                                    "children": [
+                                        {
+                                            "name": "departement_15k",
+                                            "title": "Département",
+                                            "minResolution": 0.0002800005600011201,
+                                            "maxResolution": 4.200008400016801,
+                                            "checked": false,
+                                            "zIndex": 1,
+                                            "isLayer": true,
+                                            "legendUrl": "http://dvsgowsc06.rouen.francetelecom.fr/projet_qgis/carto_poc_simple?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetLegendGraphic&LAYER=departement_15k&FORMAT=image/png&STYLE=default&SLD_VERSION=1.1.0&LAYERTITLE=false&ITEMFONTSIZE=10 ",
+                                            "visible": false,
+                                            "parent": "sous_service",
+                                            "service": "contours_administratifs"
+                                        },{
+                                    "name": "layergroupe12",
+                                    "title": "Layer Groupe 12",
+                                    "isLayer": false,
+                                    "checked": false,
+                                    "collapseIn": true,
+                                    "parent": "sous_service",
+                                    "service": "contours_administratifs",
+                                    "children": [
+                                        {
+                                            "name": "commune",
+                                            "title": "Commune >1:15 000",
+                                            "minResolution": 0.0002800005600011201,
+                                            "maxResolution": 4.200008400016801,
+                                            "checked": false,
+                                            "zIndex": 1,
+                                            "isLayer": true,
+                                            "legendUrl": "http://dvsgowsc06.rouen.francetelecom.fr/projet_qgis/carto_poc_simple?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetLegendGraphic&LAYER=commune&FORMAT=image/png&STYLE=default&SLD_VERSION=1.1.0&LAYERTITLE=false&ITEMFONTSIZE=10 ",
+                                            "visible": false,
+                                            "parent": "sous_service1",
+                                            "service": "contours_administratifs"
+                                        }
+                                    ]
+                                }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },{
+                    "name": "D1",
+                    "title": "test D1",
+                    "checked": false,
+                    "active":false,
+                    "services": []
+                },{
+                    "name": "D2",
+                    "title": "test D2",
+                    "checked": false,
+                    "active":false,
+                    "services": []
+                },{
+                    "name": "D3",
+                    "title": "test D3",
+                    "checked": false,
+                    "active":false,
+                    "services": []
+                },{
+                    "name": "D4",
+                    "title": "test D4",
+                    "checked": false,
+                    "active":false,
+                    "services": []
+                },{
+                    "name": "D5",
+                    "title": "test D5",
+                    "checked": false,
+                    "active":false,
+                    "services": []
+                }
+            ]
+        },
+        {
+            "name": "second",
+            "title": "second",
+            "active": false,
+            "domaines": [
+                {
+                    "name": "GC",
+                    "title": "Génie civil",
+                    "checked": false,
+                    "services": [
+                        {
+                            "name": "reseau_GC",
+                            "title": "Réseau GC",
+                            "url": "http://dvsgowsc04.rouen.francetelecom.fr/clusterqgis/projet_qgis/gc_poc?",
+                            "tileSize": [
+                                512,
+                                512
+                            ],
+                            "serviceType": "ImageWMS",
+                            "checked": false,
+                            "children": [
+                                {
+                                    "name": "noeud_artere",
+                                    "title": "Noeud extrémité",
+                                    "minResolution": -1.3038534077068158e-13,
+                                    "maxResolution": 0.2800005600011201,
+                                    "checked": true,
+                                    "zIndex": 1,
+                                    "isLayer": true,
+                                    "legendUrl": "http://dvsgowsc06.rouen.francetelecom.fr/projet_qgis/gc_poc?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetLegendGraphic&LAYER=noeud_artere&FORMAT=image/png&STYLE=default&SLD_VERSION=1.1.0&LAYERTITLE=false&ITEMFONTSIZE=10 ",
+                                    "visible": false,
+                                    "parent": "reseau_GC"
+                                },
+                                {
+                                    "name": "artere",
+                                    "title": "Artère",
+                                    "minResolution": 0,
+                                    "maxResolution": 1.4002828005656016,
+                                    "checked": true,
+                                    "zIndex": 2,
+                                    "isLayer": true,
+                                    "legendUrl": "http://dvsgowsc06.rouen.francetelecom.fr/projet_qgis/gc_poc?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetLegendGraphic&LAYER=artere&FORMAT=image/png&STYLE=default&SLD_VERSION=1.1.0&LAYERTITLE=false&ITEMFONTSIZE=10 ",
+                                    "visible": false,
+                                    "parent": "reseau_GC"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "site_technique",
+                            "title": "Site technique",
+                            "url": "http://dvsgowsc04.rouen.francetelecom.fr/clusterqgis/projet_qgis/gc_poc?",
+                            "tileSize": [
+                                512,
+                                512
+                            ],
+                            "serviceType": "Image",
+                            "checked": false,
+                            "children": [
+                                {
+                                    "name": "appui",
+                                    "title": "Appui",
+                                    "minResolution": -1.3038534077068158e-13,
+                                    "maxResolution": 1.4000028000056004,
+                                    "checked": true,
+                                    "zIndex": 1,
+                                    "isLayer": true,
+                                    "legendUrl": "http://dvsgowsc06.rouen.francetelecom.fr/projet_qgis/gc_poc?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetLegendGraphic&LAYER=appui&FORMAT=image/png&STYLE=default&SLD_VERSION=1.1.0&LAYERTITLE=false&ITEMFONTSIZE=10 ",
+                                    "visible": false,
+                                    "parent": "site_technique"
+                                },
+                                {
+                                    "name": "chambre",
+                                    "title": "Chambre",
+                                    "minResolution": -1.3038534077068158e-13,
+                                    "maxResolution": 0.42280084560169134,
+                                    "zIndex": 2,
+                                    "isLayer": true,
+                                    "visible": false,
+                                    "legendUrl": "http://dvsgowsc06.rouen.francetelecom.fr/projet_qgis/gc_poc?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetLegendGraphic&LAYER=chambre&FORMAT=image/png&STYLE=default&SLD_VERSION=1.1.0&LAYERTITLE=false&ITEMFONTSIZE=10 ",
+                                    "checked": false,
+                                    "parent": "site_technique"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "name": "BD_parcellaire",
+                    "title": "BD parcellaire",
+                    "checked": false,
+                    "services": [
+                        {
+                            "name": "reseau_routier",
+                            "title": "Réseau routier",
+                            "url": "http://dvsgowsc04.rouen.francetelecom.fr/clusterqgis/projet_qgis/carto_poc_simple?",
+                            "tileSize": [
+                                512,
+                                512
+                            ],
+                            "serviceType": "TileWMS",
+                            "checked": false,
+                            "children": [
+                                {
+                                    "name": "route_primaire",
+                                    "title": "Route primaire",
+                                    "minResolution": 0.0002800005600011201,
+                                    "maxResolution": 140.00056000112005,
+                                    "checked": true,
+                                    "zIndex": 1,
+                                    "isLayer": true,
+                                    "legendUrl": "http://dvsgowsc05.rouen.francetelecom.fr/projet_qgis/carto_poc_simple?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetLegendGraphic&LAYER=route_primaire&FORMAT=image/png&STYLE=default&SLD_VERSION=1.1.0&LAYERTITLE=false&ITEMFONTSIZE=10 ",
+                                    "visible": false,
+                                    "parent": "reseau_routier"
+                                },
+                                {
+                                    "name": "route_secondaire",
+                                    "title": "Route secondaire",
+                                    "minResolution": 0.0002800005600011201,
+                                    "maxResolution": 0.8400016800033603,
+                                    "checked": true,
+                                    "zIndex": 2,
+                                    "isLayer": true,
+                                    "legendUrl": "http://dvsgowsc05.rouen.francetelecom.fr/projet_qgis/carto_poc_simple?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetLegendGraphic&LAYER=route_secondaire&FORMAT=image/png&STYLE=default&SLD_VERSION=1.1.0&LAYERTITLE=false&ITEMFONTSIZE=10 ",
+                                    "visible": false,
+                                    "parent": "reseau_routier"
+                                },
+                                {
+                                    "name": "chemin",
+                                    "title": "Chemin",
+                                    "minResolution": -1.3038534077068158e-13,
+                                    "maxResolution": 14.000028000056005,
+                                    "checked": true,
+                                    "zIndex": 3,
+                                    "isLayer": true,
+                                    "legendUrl": "http://dvsgowsc05.rouen.francetelecom.fr/projet_qgis/carto_poc_simple?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetLegendGraphic&LAYER=chemin&FORMAT=image/png&STYLE=default&SLD_VERSION=1.1.0&LAYERTITLE=false&ITEMFONTSIZE=10 ",
+                                    "visible": false,
+                                    "parent": "reseau_routier"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "contours_administratifs",
+                            "title": "Contours administratifs",
+                            "url": "http://dvsgowsc04.rouen.francetelecom.fr/clusterqgis/projet_qgis/gc_poc?",
+                            "tileSize": [
+                                512,
+                                512
+                            ],
+                            "serviceType": "Image",
+                            "checked": false,
+                            "children": [
+                                {
+                                    "name": "commune_geofla",
+                                    "title": "Commune <1:15 001",
+                                    "minResolution": 4.200008400016801,
+                                    "maxResolution": 140.00028000056005,
+                                    "checked": true,
+                                    "zIndex": 1,
+                                    "isLayer": true,
+                                    "legendUrl": "http://dvsgowsc05.rouen.francetelecom.fr/projet_qgis/carto_poc_simple?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetLegendGraphic&LAYER=commune_geofla&FORMAT=image/png&STYLE=default&SLD_VERSION=1.1.0&LAYERTITLE=false&ITEMFONTSIZE=10 ",
+                                    "visible": false,
+                                    "parent": "contours_administratifs"
+                                },
+                                {
+                                    "name": "commune",
+                                    "title": "Commune >1:15 000",
+                                    "minResolution": 0.0002800005600011201,
+                                    "maxResolution": 4.200008400016801,
+                                    "zIndex": 2,
+                                    "isLayer": true,
+                                    "visible": false,
+                                    "legendUrl": "http://dvsgowsc05.rouen.francetelecom.fr/projet_qgis/carto_poc_simple?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetLegendGraphic&LAYER=commune&FORMAT=image/png&STYLE=default&SLD_VERSION=1.1.0&LAYERTITLE=false&ITEMFONTSIZE=10 ",
+                                    "checked": false,
+                                    "parent": "contours_administratifs"
+                                },
+                                {
+                                    "name": "sous_service",
+                                    "title": "sous_service",
+                                    "isLayer": false,
+                                    "checked": false,
+                                    "children": [
+                                        {
+                                            "name": "commune_geofla",
+                                            "title": "Commune sous_service",
+                                            "minResolution": 4.200008400016801,
+                                            "maxResolution": 140.00028000056005,
+                                            "checked": true,
+                                            "zIndex": 1,
+                                            "isLayer": true,
+                                            "legendUrl": "http://dvsgowsc05.rouen.francetelecom.fr/projet_qgis/carto_poc_simple?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetLegendGraphic&LAYER=commune_geofla&FORMAT=image/png&STYLE=default&SLD_VERSION=1.1.0&LAYERTITLE=false&ITEMFONTSIZE=10 ",
+                                            "visible": false,
+                                            "parent": "sous_service"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

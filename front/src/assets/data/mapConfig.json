@@ -1,0 +1,512 @@
+{
+  "configurations": [
+    {
+      "name": "Metropole",
+      "active": true,
+      "projection": "EPSG:3857",
+      "zoom": 6,
+      "minZoom": 2,
+      "maxZoom": 23,
+      "center": {
+        "point": [
+          5,
+          45
+        ],
+        "sourceProjection": "EPSG:4326",
+        "distProjection": "EPSG:3857"
+      },
+      "extent": [
+        99226.000000,
+        6049647.000000,
+        1242375.000000,
+        7110524.000000
+      ],
+      "resolution": null,
+      "localisationZoom": 17,
+      "layerGroupes": [
+        {
+          "title": "table Of Content Layers"
+        , "visible": true
+        , "name": "tableOfContent_layers",
+          "layers": []
+        },
+        {
+          "title": "Base Layers in",
+          "visible": true,
+          "name": "base_layers_in",
+          "layers": [
+            {
+              "name": "BD_Parcellaire",
+              "title": "BD Parcellaire",
+              "url_img": "assets/img/bg-parcellaire.jpg",
+              "default": false,
+              "active": true,
+              "minScale": 49,
+              "maxScale": 10000,
+              "type": "Image",
+              "visible": true,
+              "opacity": 100,
+              "zIndex": 10,
+              "source": {
+                "ratio": 1,
+                "url": "http://dvsgowsc04.rouen.francetelecom.fr/clusterqgis/projet_qgis/carto_poc_simple?",
+                "type": "ImageWMS",
+                "params": {
+                  "LAYERS": "route_primaire,route_secondaire,chemin,batiment,parcelle,commune_geofla,commune,departement_geofla,departement_15k,region_geofla",
+                  "FORMAT": "image/png",
+                  "VERSION": "1.3.1",
+                  "transparent": true
+                }
+              }
+            },{
+              "name": "cadastre",
+              "title": "Cadastre",
+              "url_img": "assets/img/bg-cadastre.jpg",
+              "default": false,
+              "active": true,
+              "minScale": 49,
+              "maxScale": 2134,
+              "type": "Image",
+              "visible": false,
+              "opacity": 100,
+              "zIndex": 11,
+              "source": {
+                "ratio": 1,
+                "url": "http://dvsgowsc04.rouen.francetelecom.fr/clusterqgis/projet_qgis/carto_poc_simple?",
+                "type": "ImageWMS",
+                "params": {
+                  "LAYERS": "route_primaire,route_secondaire",
+                  "FORMAT": "image/png",
+                  "VERSION": "1.3.1",
+                  "transparent": true
+                }
+              }
+            }
+          ]
+        },
+        {
+          "title": "Base Layers EX",
+          "visible": true,
+          "name": "base_layers_ex",
+          "layers": [
+
+            {
+              "name": "IGN",
+              "title": "Plan IGN",
+              "url_img":"assets/img/bg-france-raster.jpg",
+              "type": "Tile",
+              "default": true,
+              "active": true,
+              "visible": true,
+              "zIndex": 0,
+              "minScale":2132,
+              "maxScale" :139770567,
+              "opacity": 100,
+              "source": {
+                "type": "WMTS",
+                "style": "normal",
+                "projection": "EPSG:3857",
+                "format": "image/jpeg",
+                "matrixSet": "PM",
+                "layer": "GEOGRAPHICALGRIDSYSTEMS.PLANIGN",
+                "tileGrid": {
+                  "origin": [
+                    -20037508,
+                    20037508
+                  ],
+                  "tileSize": [
+                    512,
+                    512
+                  ],
+                  "resolutions": [
+                    156543.0339280410,
+                    78271.5169640205,
+                    39135.7584820102,
+                    19567.8792410051,
+                    9783.9396205026,
+                    4891.9698102513,
+                    2445.9849051256,
+                    1222.9924525628,
+                    611.4962262814,
+                    305.7481131407,
+                    152.8740565704,
+                    76.4370282852,
+                    38.2185141426,
+                    19.1092570713,
+                    9.5546285356,
+                    4.7773142678,
+                    2.3886571339,
+                    1.1943285670,
+                    0.5971642835,
+                    0.2985821417,
+                    0.1492910709,
+                    0.0746455354
+                  ],
+                  "matrixIds": [
+                    "0",
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                    "6",
+                    "7",
+                    "8",
+                    "9",
+                    "10",
+                    "11",
+                    "12",
+                    "13",
+                    "14",
+                    "15",
+                    "16",
+                    "17",
+                    "18",
+                    "19",
+                    "20",
+                    "21"
+                  ]
+                },
+                "url": "https://wxs.ign.fr/m0lmaxbynxbqg7gl2l45lw32/wmts"
+              }
+            },
+            {
+              "name": "OSM",
+              "title": "OpenStreetMap",
+              "url_img":"assets/img/bg-openstreet.jpg",
+              "default": false,
+              "active": true,
+              "minScale":266,
+              "maxScale" :139770567,
+              "opacity": 100,
+              "zIndex": 0,
+              "type": "Tile",
+              "visible": false,
+              "source": {
+                "type": "OSM"
+              }
+            }, {
+              "name": "satellite",
+              "title": "Satellite",
+              "url_img":"assets/img/bg-satellite.jpg",
+              "type": "Tile",
+              "default": false,
+              "active": true,
+              "visible": false,
+              "zIndex": 0,
+              "minScale":266,
+              "maxScale" :139770567,
+              "opacity": 100,
+              "source": {
+                "type": "WMTS",
+                "style": "normal",
+                "projection": "EPSG:3857",
+                "format": "image/jpeg",
+                "matrixSet": "PM",
+                "layer": "ORTHOIMAGERY.ORTHOPHOTOS",
+                "tileGrid": {
+                  "origin": [
+                    -20037508,
+                    20037508
+                  ],
+                  "tileSize": [
+                    512,
+                    512
+                  ],
+                  "resolutions": [
+                    156543.0339280410,
+                    78271.5169640205,
+                    39135.7584820102,
+                    19567.8792410051,
+                    9783.9396205026,
+                    4891.9698102513,
+                    2445.9849051256,
+                    1222.9924525628,
+                    611.4962262814,
+                    305.7481131407,
+                    152.8740565704,
+                    76.4370282852,
+                    38.2185141426,
+                    19.1092570713,
+                    9.5546285356,
+                    4.7773142678,
+                    2.3886571339,
+                    1.1943285670,
+                    0.5971642835,
+                    0.2985821417,
+                    0.1492910709,
+                    0.0746455354
+                  ],
+                  "matrixIds": [
+                    "0",
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                    "6",
+                    "7",
+                    "8",
+                    "9",
+                    "10",
+                    "11",
+                    "12",
+                    "13",
+                    "14",
+                    "15",
+                    "16",
+                    "17",
+                    "18",
+                    "19",
+                    "20",
+                    "21"
+                  ]
+                },
+                "url": "https://wxs.ign.fr/m0lmaxbynxbqg7gl2l45lw32/wmts"
+              }
+            },
+            {
+              "name": "none",
+              "title": "Aucun",
+              "url_img":"assets/img/bg-none.jpg",
+              "default": false,
+              "active": false,
+              "type": "none",
+              "opacity": 100,
+              "minScale":0,
+              "maxScale" :559082264,
+              "zIndex": 0,
+              "visible": false,
+              "source": {
+              }
+            }
+          ]
+        },
+        {
+          "title": "interaction Layers",
+          "visible": true,
+          "name": "interaction_layers",
+          "layers": [
+            {
+              "title": "Geolocalisation",
+              "name": "geolocation",
+              "type": "Vector",
+              "visible": true,
+              "source": {
+                "type": "VectorInteraction"
+              },
+              "style": {
+                "type": "circle",
+                "fillColor": "#2980B9",
+                "strokeColor": "rgba(255, 255, 255, 0.5)",
+                "strokewidth": 5,
+                "radius": 7,
+                "src": "",
+                "anchor": [],
+                "anchorXUnits": "",
+                "anchorYUnits": "",
+                "opacity": 1
+              },
+              "zIndex": 1000
+            },{
+              "title": "Zoom",
+              "name": "zoom",
+              "type": "Vector",
+              "visible": true,
+              "source": {
+                "type": "VectorInteraction"
+              },
+              "style": {
+                "type": "style",
+                "fillColor": "rgba(255, 255, 255, 0.1)",
+                "strokeColor": "#2980B9",
+                "strokewidth": 2,
+                "radius": 7,
+                "src": "",
+                "anchor": [],
+                "anchorXUnits": "",
+                "anchorYUnits": "",
+                "opacity": 1
+              },
+              "zIndex": 1001
+            }
+          ]
+        }
+      ],
+      "scales": [
+        {
+          "zoom": 0,
+          "scale": 559082264,
+          "isUsed": false,
+          "length": null,
+          "unit": "km"
+        },
+        {
+          "zoom": 1,
+          "scale": 279541132,
+          "isUsed": false,
+          "length": null,
+          "unit": "km"
+        },
+        {
+          "zoom": 2,
+          "scale": 139770566,
+          "isUsed": true,
+          "length": 5000,
+          "unit": "km"
+        },
+        {
+          "zoom": 3,
+          "scale": 69885283,
+          "isUsed": true,
+          "length": 1000,
+          "unit": "km"
+        },
+        {
+          "zoom": 4,
+          "scale": 34942642,
+          "isUsed": true,
+          "length": 500,
+          "unit": "km"
+        },
+        {
+          "zoom": 5,
+          "scale": 17471321,
+          "isUsed": true,
+          "length": 500,
+          "unit": "km"
+        },
+        {
+          "zoom": 6,
+          "scale": 8735660,
+          "isUsed": true,
+          "length": 200,
+          "unit": "km"
+        },
+        {
+          "zoom": 7,
+          "scale": 4367830,
+          "isUsed": true,
+          "length": 100,
+          "unit": "km"
+        },
+        {
+          "zoom": 8,
+          "scale": 2183915,
+          "isUsed": true,
+          "length": 50,
+          "unit": "km"
+        },
+        {
+          "zoom": 9,
+          "scale": 1091958,
+          "isUsed": true,
+          "length": 20,
+          "unit": "km"
+        },
+        {
+          "zoom": 10,
+          "scale": 545979,
+          "isUsed": true,
+          "length": 10,
+          "unit": "km"
+        },
+        {
+          "zoom": 11,
+          "scale": 272989,
+          "isUsed": true,
+          "length": 5,
+          "unit": "km"
+        },
+        {
+          "zoom": 12,
+          "scale": 136495,
+          "isUsed": true,
+          "length": 2,
+          "unit": "km"
+        },
+        {
+          "zoom": 13,
+          "scale": 68247,
+          "isUsed": true,
+          "length": 1000,
+          "unit": "m"
+        },
+        {
+          "zoom": 14,
+          "scale": 34124,
+          "isUsed": true,
+          "length": 500,
+          "unit": "m"
+        },
+        {
+          "zoom": 15,
+          "scale": 17062,
+          "isUsed": true,
+          "length": 500,
+          "unit": "m"
+        },
+        {
+          "zoom": 16,
+          "scale": 8531,
+          "isUsed": true,
+          "length": 200,
+          "unit": "m"
+        },
+        {
+          "zoom": 17,
+          "scale": 4265,
+          "isUsed": true,
+          "length": 100,
+          "unit": "m"
+        },
+        {
+          "zoom": 18,
+          "scale": 2133,
+          "isUsed": true,
+          "length": 50,
+          "unit": "m"
+        },
+        {
+          "zoom": 19,
+          "scale": 1066,
+          "isUsed": true,
+          "length": 20,
+          "unit": "m"
+        },
+        {
+          "zoom": 20,
+          "scale": 533,
+          "isUsed": true,
+          "length": 10,
+          "unit": "m"
+        },
+        {
+          "zoom": 21,
+          "scale": 267,
+          "isUsed": true,
+          "length": 5,
+          "unit": "m"
+        },
+        {
+          "zoom": 22,
+          "scale": 100,
+          "isUsed": true,
+          "length": 5,
+          "unit": "m"
+        },
+        {
+          "zoom": 23,
+          "scale": 50,
+          "isUsed": true,
+          "length": 1,
+          "unit": "m"
+        }
+      ]
+    },
+    {
+      "name": "Second",
+      "active": false
+    }
+  ]
+}

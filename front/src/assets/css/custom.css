@@ -1,0 +1,19 @@
+.btn{
+	outline: none !important;
+}
+
+
+.navbar-brand {
+    float: left;
+    height: 50px;
+    padding: 10px 10px  !important;
+    font-size: 18px;
+    line-height: 20px;
+}
+
+@media screen and (max-width: 767px) {
+  .map-controller {
+    bottom: -20px !important;
+  }
+}
+

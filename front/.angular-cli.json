@@ -19,9 +19,16 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
-        "styles.css"
+        "./assets/css/custom.css",
+        "./assets/css/main.css",
+        "./assets/css/bootstrap.min.css",
+        "./assets/css/bootstrap-theme.min.css",
+        "./assets/css/bootstrap-glyphicons.css"
       ],
-      "scripts": [],
+      "scripts": [
+        "../node_modules/proj4/dist/proj4.js",
+        "./assets/js/projections.js"
+      ],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",
