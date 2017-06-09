@@ -2,25 +2,25 @@ import { Coordinate, Map } from 'openlayers';
 // import * as proj4 from 'proj4';
 import * as ol from 'openlayers';
 import { Injectable, ElementRef } from '@angular/core';
-import { Http, } from '@angular/http';
-import { LayerService } from '../layer/layer.service';
+import { Http } from '@angular/http';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/observable/throw';
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/map';
+import { LayerOpenlayersService } from "app/services/layer-openlayers/layer-openlayers.service";
 
 export interface ScaleDto {
   scaleWidth: number;
   currentScale: any;
 }
 @Injectable()
-export class MapService {
+export class MapOpenlayersService {
 
   private _map: Map;
   public _scaleWidth: number;
   public _currentScale: any;
   private zoomInteraction: ol.interaction.DragBox;
-  constructor(private http: Http, private layerService: LayerService) {
+  constructor(private http: Http, private layerService: LayerOpenlayersService) {
     this.zoomInteraction = null;
   }
   public get map(): Map {

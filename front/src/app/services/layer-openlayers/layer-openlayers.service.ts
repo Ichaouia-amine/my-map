@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 // import { GeoLayer } from '../../model/map/geoLayer';
 import * as ol from 'openlayers';
 @Injectable()
-export class LayerService {
+export class LayerOpenlayersService {
     bingImagerySets: string[];
     mapQuestLayers: string[];
     constructor() {
