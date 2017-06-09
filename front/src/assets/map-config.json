@@ -1,0 +1,131 @@
+[
+    {
+        "view": {
+            "center": [
+                2,
+                48
+            ],
+            "zoom": 7,
+            "minZoom": 6,
+            "maxZoom": 22,
+            "constrainRotation": true,
+            "enableRotation": true,
+            "extent": null,
+            "maxResolution": null,
+            "minResolution": null,
+            "resolution": null,
+            "resolutions": null,
+            "rotation": 0,
+            "zoomFactor": null,
+            "projection": "EPSG:3857"
+        },
+        "controls": null,
+        "pixelRatio": null,
+        "interactions": null,
+        "keyboardEventTarget": null,
+        "loadTilesWhileAnimating": false,
+        "layers": {
+            "layers-groupes": [
+                {
+                    "name": "base-layers",
+                    "layers": [
+                        {
+                            "name": "OSM",
+                            "title": "OpenStreetMap",
+                            "url_img": "assets/img/bg-openstreet.jpg",
+                            "visible": true,
+                            "minScale": 266,
+                            "maxScale": 139770567,
+                            "opacity": 100,
+                            "zIndex": 0,
+                            "type": "Tile",
+                            "source": {
+                                "type": "OSM"
+                            }
+                        },
+                        {
+                            "name": "IGN_satellite",
+                            "title": "IGN Satellite",
+                            "url_img": "assets/img/bg-satellite.jpg",
+                            "type": "Tile",
+                            "visible": false,
+                            "zIndex": 0,
+                            "minScale": 266,
+                            "maxScale": 139770567,
+                            "opacity": 100,
+                            "source": {
+                                "type": "WMTS",
+                                "style": "normal",
+                                "projection": "EPSG:3857",
+                                "format": "image/jpeg",
+                                "matrixSet": "PM",
+                                "layer": "ORTHOIMAGERY.ORTHOPHOTOS",
+                                "tileGrid": {
+                                    "origin": [
+                                        -20037508,
+                                        20037508
+                                    ],
+                                    "tileSize": [
+                                        512,
+                                        512
+                                    ],
+                                    "resolutions": [
+                                        156543.0339280410,
+                                        78271.5169640205,
+                                        39135.7584820102,
+                                        19567.8792410051,
+                                        9783.9396205026,
+                                        4891.9698102513,
+                                        2445.9849051256,
+                                        1222.9924525628,
+                                        611.4962262814,
+                                        305.7481131407,
+                                        152.8740565704,
+                                        76.4370282852,
+                                        38.2185141426,
+                                        19.1092570713,
+                                        9.5546285356,
+                                        4.7773142678,
+                                        2.3886571339,
+                                        1.1943285670,
+                                        0.5971642835,
+                                        0.2985821417,
+                                        0.1492910709,
+                                        0.0746455354
+                                    ],
+                                    "matrixIds": [
+                                        "0",
+                                        "1",
+                                        "2",
+                                        "3",
+                                        "4",
+                                        "5",
+                                        "6",
+                                        "7",
+                                        "8",
+                                        "9",
+                                        "10",
+                                        "11",
+                                        "12",
+                                        "13",
+                                        "14",
+                                        "15",
+                                        "16",
+                                        "17",
+                                        "18",
+                                        "19",
+                                        "20",
+                                        "21"
+                                    ]
+                                },
+                                "url": "https://wxs.ign.fr/m0lmaxbynxbqg7gl2l45lw32/wmts"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+        // all time in wgs84
+    },
+    {}
+]
