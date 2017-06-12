@@ -13,7 +13,7 @@ export class HttpService {
   process: EventEmitter<any> = new EventEmitter<any>();
   authFailed: EventEmitter<any> = new EventEmitter<any>();
 
-  constructor(private _http: Http, private _router: Router) { }
+  constructor(private _http: Http/*, private _router: Router*/) { }
 
   /*private _buildAuthHeader(): string {
     const jwtToken: JwtToken = JSON.parse(localStorage.getItem('jwtToken')).jwtToken;
@@ -62,11 +62,11 @@ export class HttpService {
       this.process.next(Action.QueryStart);
       this._http.request(new Request(requestOptions))
         .map(res => {
-          const jwtToken: any = JSON.parse(localStorage.getItem('jwtToken')).jwtToken;
+          /*const jwtToken: any = JSON.parse(localStorage.getItem('jwtToken')).jwtToken;
           if (res.headers !== undefined && res.headers.get('Authorization') !== undefined) {
             jwtToken.token = res.headers.get('Authorization');
             localStorage.setItem('jwtToken', JSON.stringify({ jwtToken: jwtToken }));
-          }
+          }*/
           return res.json();
         })
         .finally(() => {
@@ -82,7 +82,7 @@ export class HttpService {
             case 401:
               // intercept 401
               this.authFailed.next(err);
-              this._router.navigate(['denied']);
+              // this._router.navigate(['denied']);
               break;
             default:
               observer.error(err);

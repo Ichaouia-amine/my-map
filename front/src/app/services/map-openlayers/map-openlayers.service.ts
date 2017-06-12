@@ -53,58 +53,64 @@ export class MapOpenlayersService {
   public setMapRotation(map: Map, rotation: number) {
     map.getView().setRotation(rotation);
   }
-
-  public initMap(activeConfiguration: any, mapElement: ElementRef): Map {
-    const centerJSON = JSON.parse( activeConfiguration.center);
-    let center: [number, number] = centerJSON.point;
-    if (centerJSON.sourceProjection !==
-      centerJSON.distProjection) {
-      center = ol.proj
-        .transform(centerJSON.point,
-        centerJSON.sourceProjection,
-        centerJSON.distProjection);
+public transform(point, source, dist) {
+    return ol.proj.transform(point, source, dist);
+  }
+  public transformExtent(extent, source, dist) {
+    return ol.proj.transformExtent(extent, source, dist);
+  }
+  innitMap(currentMapSettings:any){
+    let center: [number, number] = currentMapSettings.view.center.point;
+    if (currentMapSettings.view.center.sourceProjection !==
+      currentMapSettings.view.center.distProjection) {
+      center = this.transform(currentMapSettings.view.center.point,
+        currentMapSettings.view.center.sourceProjection,
+        currentMapSettings.view.center.distProjection);
     }
     const mainView = new ol.View({
-      projection: activeConfiguration.projection,
+      projection: currentMapSettings.view.projection,
       center: center,
-      zoom: activeConfiguration.zoom,
-      minZoom: activeConfiguration.minZoom,
-      maxZoom: activeConfiguration.maxZoom
+      zoom: currentMapSettings.view.zoom,
+      minZoom: currentMapSettings.view.minZoom,
+      maxZoom: currentMapSettings.view.maxZoom
     });
+    console.log(currentMapSettings.view.zoom);
+    
     const map = new ol.Map({
-      target: null,
+      target: 'main-map',
       view: mainView,
-      layers: this.initLayersGroups(activeConfiguration),
+      layers: this.initLayersGroups(currentMapSettings)/*[new ol.layer.Tile({
+            source: new ol.source.OSM()
+          })]*/,
       controls: [new ol.control.ScaleLine({ className: 'scale-line', target: document.getElementById('scale-line') })]
     }
     );
-    const el: any = mapElement.nativeElement.firstElementChild;
-    map.setTarget(el);
-    map.updateSize();
+    
     return map;
-  }
+}
   /**
    * @initLayersGroups: to load all layerGroups and layers from the active configuration
    */
 
-  private initLayersGroups(configuration: any): ol.layer.Group[] {
+  private initLayersGroups(currentMapSettings: any): ol.layer.Group[] {
     const layerGroups: ol.layer.Group[] = [];
-    const layerGroupsConfig: any[] = configuration.servicegroups;
+    const layerGroupsConfig: any[] = currentMapSettings.layersgroupes;
+    console.log(currentMapSettings);
+    
       layerGroupsConfig.forEach(layerGroup => {
-        const layers: any[] = layerGroup.mapservices;
+        const layers: any[] = layerGroup.layers;
         const group: ol.layer.Group = this.layerService.createGroup(layerGroup.name);
         const collection: ol.Collection<any> = new ol.Collection();
         layers.forEach(l => {
-          const layer = JSON.parse(l.config);
-          const oLayer: any = this.layerService.createLayer(layer, null, layer.name, null);
-          if (layer.style !== undefined) {
-            const style = this.layerService.createStyle(layer.style);
+          const oLayer: any = this.layerService.createLayer(l, null, l.name, null);
+          if (l.style !== undefined) {
+            const style = this.layerService.createStyle(l.style);
             oLayer.setStyle(style);
           }
           if (typeof oLayer !== 'undefined') {
-            oLayer.setVisible(layer.visible);
-            if (typeof layer.zIndex !== 'undefined') {
-              oLayer.setZIndex(layer.zIndex);
+            oLayer.setVisible(l.visible);
+            if (typeof l.zIndex !== 'undefined') {
+              oLayer.setZIndex(l.zIndex);
             }
             collection.insertAt(collection.getLength() - 1, oLayer);
           }

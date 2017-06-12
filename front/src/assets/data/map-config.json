@@ -1,0 +1,337 @@
+[
+    {
+        "active": true,
+        "view": {
+            "center": {
+                "point": [
+                    2,
+                    47
+                ],
+                "sourceProjection": "EPSG:4326",
+                "distProjection": "EPSG:3857"
+            },
+            "zoom": 6,
+            "minZoom": 5,
+            "maxZoom": 22,
+            "constrainRotation": true,
+            "enableRotation": true,
+            "extent": null,
+            "maxResolution": null,
+            "minResolution": null,
+            "resolution": null,
+            "resolutions": null,
+            "rotation": 0,
+            "zoomFactor": null,
+            "projection": "EPSG:3857"
+        },
+        "controls": null,
+        "pixelRatio": null,
+        "interactions": null,
+        "keyboardEventTarget": null,
+        "loadTilesWhileAnimating": false,
+        "layersgroupes": [
+            {
+                "name": "interaction-layers",
+                "layers": [
+            {
+              "title": "Geolocalisation",
+              "name": "geolocation",
+              "type": "Vector",
+              "visible": true,
+              "source": {
+                "type": "VectorInteraction"
+              },
+              "style": {
+                "type": "circle",
+                "fillColor": "#2980B9",
+                "strokeColor": "rgba(255, 255, 255, 0.5)",
+                "strokewidth": 5,
+                "radius": 7,
+                "src": "",
+                "anchor": [],
+                "anchorXUnits": "",
+                "anchorYUnits": "",
+                "opacity": 1
+              },
+              "zIndex": 1000
+            },{
+              "title": "Zoom",
+              "name": "zoom",
+              "type": "Vector",
+              "visible": true,
+              "source": {
+                "type": "VectorInteraction"
+              },
+              "style": {
+                "type": "style",
+                "fillColor": "rgba(255, 255, 255, 0.1)",
+                "strokeColor": "#2980B9",
+                "strokewidth": 2,
+                "radius": 7,
+                "src": "",
+                "anchor": [],
+                "anchorXUnits": "",
+                "anchorYUnits": "",
+                "opacity": 1
+              },
+              "zIndex": 1001
+            }
+          ]
+            },
+            {
+                "name": "base-layers",
+                "layers": [
+                    {
+                        "name": "OSM",
+                        "title": "OpenStreetMap",
+                        "url_img": "assets/img/bg-openstreet.jpg",
+                        "visible": true,
+                        "minScale": 266,
+                        "maxScale": 139770567,
+                        "opacity": 100,
+                        "zIndex": 1,
+                        "type": "Tile",
+                        "inclusive": true,
+                        "source": {
+                            "type": "OSM"
+                        }
+                    },
+                    {
+                        "name": "IGN_satellite",
+                        "title": "IGN Satellite",
+                        "url_img": "assets/img/bg-satellite.jpg",
+                        "type": "Tile",
+                        "visible": false,
+                        "zIndex": 0,
+                        "minScale": 266,
+                        "maxScale": 139770567,
+                        "opacity": 100,
+                        "source": {
+                            "type": "WMTS",
+                            "style": "normal",
+                            "projection": "EPSG:3857",
+                            "format": "image/jpeg",
+                            "matrixSet": "PM",
+                            "layer": "ORTHOIMAGERY.ORTHOPHOTOS",
+                            "inclusive": true,
+                            "tileGrid": {
+                                "origin": [
+                                    -20037508,
+                                    20037508
+                                ],
+                                "tileSize": [
+                                    512,
+                                    512
+                                ],
+                                "resolutions": [
+                                    156543.0339280410,
+                                    78271.5169640205,
+                                    39135.7584820102,
+                                    19567.8792410051,
+                                    9783.9396205026,
+                                    4891.9698102513,
+                                    2445.9849051256,
+                                    1222.9924525628,
+                                    611.4962262814,
+                                    305.7481131407,
+                                    152.8740565704,
+                                    76.4370282852,
+                                    38.2185141426,
+                                    19.1092570713,
+                                    9.5546285356,
+                                    4.7773142678,
+                                    2.3886571339,
+                                    1.1943285670,
+                                    0.5971642835,
+                                    0.2985821417,
+                                    0.1492910709,
+                                    0.0746455354
+                                ],
+                                "matrixIds": [
+                                    "0",
+                                    "1",
+                                    "2",
+                                    "3",
+                                    "4",
+                                    "5",
+                                    "6",
+                                    "7",
+                                    "8",
+                                    "9",
+                                    "10",
+                                    "11",
+                                    "12",
+                                    "13",
+                                    "14",
+                                    "15",
+                                    "16",
+                                    "17",
+                                    "18",
+                                    "19",
+                                    "20",
+                                    "21"
+                                ]
+                            },
+                            "url": "https://wxs.ign.fr/m0lmaxbynxbqg7gl2l45lw32/wmts"
+                        }
+                    },
+                    {
+                        "name": "BD_Parcellaire",
+                        "title": "BD Parcellaire",
+                        "url_img": "assets/img/bg-parcellaire.jpg",
+                        "minScale": 49,
+                        "maxScale": 10000,
+                        "type": "Image",
+                        "inclusive": false,
+                        "visible": true,
+                        "opacity": 100,
+                        "zIndex": 3,
+                        "source": {
+                            "ratio": 1,
+                            "url": "http://localhost:8080/geoserver/france/wms?",
+                            "type": "ImageWMS",
+                            "params": {
+                                "LAYERS": "france:limitecommune",
+                                "FORMAT": "image/png; mode=8bit",
+                                "VERSION": "1.3.1",
+                                "transparent": true
+                            }
+                        }
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "active": false,
+        "view": {
+            "center": {
+                "point": [
+                    46.3153457,
+                    3.0930741
+                ],
+                "sourceProjection": "EPSG:4326",
+                "distProjection": "EPSG:3857"
+            },
+            "zoom": 5.7,
+            "minZoom": 2,
+            "maxZoom": 22,
+            "constrainRotation": true,
+            "enableRotation": true,
+            "extent": null,
+            "maxResolution": null,
+            "minResolution": null,
+            "resolution": null,
+            "resolutions": null,
+            "rotation": 0,
+            "zoomFactor": null,
+            "projection": "EPSG:3857"
+        },
+        "controls": null,
+        "pixelRatio": null,
+        "interactions": null,
+        "keyboardEventTarget": null,
+        "loadTilesWhileAnimating": false,
+        "layers": {
+            "layers-groupes": [
+                {
+                    "name": "base-layers",
+                    "layers": [
+                        {
+                            "name": "OSM",
+                            "title": "OpenStreetMap",
+                            "url_img": "assets/img/bg-openstreet.jpg",
+                            "visible": true,
+                            "minScale": 266,
+                            "maxScale": 139770567,
+                            "opacity": 100,
+                            "zIndex": 0,
+                            "type": "Tile",
+                            "source": {
+                                "type": "OSM"
+                            }
+                        },
+                        {
+                            "name": "IGN_satellite",
+                            "title": "IGN Satellite",
+                            "url_img": "assets/img/bg-satellite.jpg",
+                            "type": "Tile",
+                            "visible": false,
+                            "zIndex": 0,
+                            "minScale": 266,
+                            "maxScale": 139770567,
+                            "opacity": 100,
+                            "source": {
+                                "type": "WMTS",
+                                "style": "normal",
+                                "projection": "EPSG:3857",
+                                "format": "image/jpeg",
+                                "matrixSet": "PM",
+                                "layer": "ORTHOIMAGERY.ORTHOPHOTOS",
+                                "tileGrid": {
+                                    "origin": [
+                                        -20037508,
+                                        20037508
+                                    ],
+                                    "tileSize": [
+                                        512,
+                                        512
+                                    ],
+                                    "resolutions": [
+                                        156543.0339280410,
+                                        78271.5169640205,
+                                        39135.7584820102,
+                                        19567.8792410051,
+                                        9783.9396205026,
+                                        4891.9698102513,
+                                        2445.9849051256,
+                                        1222.9924525628,
+                                        611.4962262814,
+                                        305.7481131407,
+                                        152.8740565704,
+                                        76.4370282852,
+                                        38.2185141426,
+                                        19.1092570713,
+                                        9.5546285356,
+                                        4.7773142678,
+                                        2.3886571339,
+                                        1.1943285670,
+                                        0.5971642835,
+                                        0.2985821417,
+                                        0.1492910709,
+                                        0.0746455354
+                                    ],
+                                    "matrixIds": [
+                                        "0",
+                                        "1",
+                                        "2",
+                                        "3",
+                                        "4",
+                                        "5",
+                                        "6",
+                                        "7",
+                                        "8",
+                                        "9",
+                                        "10",
+                                        "11",
+                                        "12",
+                                        "13",
+                                        "14",
+                                        "15",
+                                        "16",
+                                        "17",
+                                        "18",
+                                        "19",
+                                        "20",
+                                        "21"
+                                    ]
+                                },
+                                "url": "https://wxs.ign.fr/m0lmaxbynxbqg7gl2l45lw32/wmts"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+]
