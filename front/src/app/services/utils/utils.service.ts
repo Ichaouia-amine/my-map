@@ -4,5 +4,11 @@ import { Injectable } from '@angular/core';
 export class UtilsService {
 
   constructor() { }
+isDefined(value: any) {
+        if (typeof value !== 'undefined') {
+            return true;
+        }
 
+        return false;
+    }
 }

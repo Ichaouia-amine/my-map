@@ -1,7 +1,7 @@
 import { Router } from '@angular/router';
 // import { JwtToken } from './../../model/jwtuser';
 import * as Rx from 'rxjs/Rx';
-//import { AuthenticationService } from './../guards/authentication.service';
+// import { AuthenticationService } from './../guards/authentication.service';
 import { Request, Response, RequestOptionsArgs, RequestMethod, Http, Headers, RequestOptions } from '@angular/http';
 import { Injectable, EventEmitter } from '@angular/core';
 
@@ -90,5 +90,8 @@ export class HttpService {
           }
         });
     });
+  }
+  getJson(url: string) {
+    return this.get(url);
   }
 }

@@ -1,0 +1,28 @@
+.disabled-text
+{
+    color: #CCC;
+}
+.navbuttons {
+    display: inline-block !important;
+    overflow: auto !important;
+    overflow-y: hidden !important;
+
+    max-width: 100% !important;
+    margin: 0 0 1em !important;
+
+    white-space: nowrap !important;
+}
+
+.navbuttons LI {
+    display: inline-block !important;
+    vertical-align: top !important; 
+}
+.checkbox a {
+    margin-left: 0px !important;
+    text-decoration: none !important;
+}
+.checkbox img {
+    margin-left: 50px;
+}
+
+    

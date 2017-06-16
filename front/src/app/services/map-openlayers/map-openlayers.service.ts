@@ -7,7 +7,7 @@ import 'rxjs/add/observable/of';
 import 'rxjs/add/observable/throw';
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/map';
-import { LayerOpenlayersService } from "app/services/layer-openlayers/layer-openlayers.service";
+import { LayerOpenlayersService } from 'app/services/layer-openlayers/layer-openlayers.service';
 
 export interface ScaleDto {
   scaleWidth: number;
@@ -46,20 +46,24 @@ export class MapOpenlayersService {
     return map.getView().fit(extent, map.getSize());
   }
 
-  public transform3857To4326(point)  {
+  public transform3857To4326(point) {
     return ol.proj.transform(point, 'EPSG:3857', 'EPSG:4326');
   }
-
+  readGetCapabilities(value: any): any {
+    const wmsparser = new ol.format.WMSCapabilities();
+    const parserOutput: any = wmsparser.read(value);
+    return parserOutput.Capability.Layer.Layer;
+  }
   public setMapRotation(map: Map, rotation: number) {
     map.getView().setRotation(rotation);
   }
-public transform(point, source, dist) {
+  public transform(point, source, dist) {
     return ol.proj.transform(point, source, dist);
   }
   public transformExtent(extent, source, dist) {
     return ol.proj.transformExtent(extent, source, dist);
   }
-  innitMap(currentMapSettings:any){
+  innitMap(currentMapSettings: any) {
     let center: [number, number] = currentMapSettings.view.center.point;
     if (currentMapSettings.view.center.sourceProjection !==
       currentMapSettings.view.center.distProjection) {
@@ -74,8 +78,7 @@ public transform(point, source, dist) {
       minZoom: currentMapSettings.view.minZoom,
       maxZoom: currentMapSettings.view.maxZoom
     });
-    console.log(currentMapSettings.view.zoom);
-    
+
     const map = new ol.Map({
       target: 'main-map',
       view: mainView,
@@ -85,9 +88,9 @@ public transform(point, source, dist) {
       controls: [new ol.control.ScaleLine({ className: 'scale-line', target: document.getElementById('scale-line') })]
     }
     );
-    
+
     return map;
-}
+  }
   /**
    * @initLayersGroups: to load all layerGroups and layers from the active configuration
    */
@@ -95,30 +98,28 @@ public transform(point, source, dist) {
   private initLayersGroups(currentMapSettings: any): ol.layer.Group[] {
     const layerGroups: ol.layer.Group[] = [];
     const layerGroupsConfig: any[] = currentMapSettings.layersgroupes;
-    console.log(currentMapSettings);
-    
-      layerGroupsConfig.forEach(layerGroup => {
-        const layers: any[] = layerGroup.layers;
-        const group: ol.layer.Group = this.layerService.createGroup(layerGroup.name);
-        const collection: ol.Collection<any> = new ol.Collection();
-        layers.forEach(l => {
-          const oLayer: any = this.layerService.createLayer(l, null, l.name, null);
-          if (l.style !== undefined) {
-            const style = this.layerService.createStyle(l.style);
-            oLayer.setStyle(style);
+    layerGroupsConfig.forEach(layerGroup => {
+      const layers: any[] = layerGroup.layers;
+      const group: ol.layer.Group = this.layerService.createGroup(layerGroup.name);
+      const collection: ol.Collection<any> = new ol.Collection();
+      layers.forEach(l => {
+        const oLayer: any = this.layerService.createLayer(l, null, l.name, null);
+        if (l.style !== undefined) {
+          const style = this.layerService.createStyle(l.style);
+          oLayer.setStyle(style);
+        }
+        if (typeof oLayer !== 'undefined') {
+          oLayer.setVisible(l.visible);
+          if (typeof l.zIndex !== 'undefined') {
+            oLayer.setZIndex(l.zIndex);
           }
-          if (typeof oLayer !== 'undefined') {
-            oLayer.setVisible(l.visible);
-            if (typeof l.zIndex !== 'undefined') {
-              oLayer.setZIndex(l.zIndex);
-            }
-            collection.insertAt(collection.getLength() - 1, oLayer);
-          }
+          collection.insertAt(collection.getLength() - 1, oLayer);
+        }
 
-        });
-        group.setLayers(collection);
-        layerGroups.push(group);
       });
+      group.setLayers(collection);
+      layerGroups.push(group);
+    });
     return layerGroups;
   }
   createLayer(layer) {
@@ -196,7 +197,7 @@ public transform(point, source, dist) {
   isContainCordinate(map: Map, coordinate: Coordinate) {
     return ol.extent.containsCoordinate(map.getView().calculateExtent(map.getSize()), coordinate);
   }
-   isContainXY(extent: ol.Extent, x: number, y: number) {
+  isContainXY(extent: ol.Extent, x: number, y: number) {
     return ol.extent.containsXY(extent, x, y);
   }
   getMapLineScaleControl(map: Map): ol.control.ScaleLine {

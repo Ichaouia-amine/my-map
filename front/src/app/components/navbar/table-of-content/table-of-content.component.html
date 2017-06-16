@@ -1,0 +1,198 @@
+<div class="shutter-content" [collapse]="isCollapseToc">
+  <div class="form-group form-group-center row">
+    <div class="col-xs-2">
+      <label for="" class="control-label">TDMs</label>
+    </div>
+    <div class="col-xs-5">
+      <select id="list-choix-tdm" class="form-control" (change)="onChangeTocList($event.target.value)">
+               <template ngFor let-item [ngForOf]="alltableOfContent" let-i="index">
+                 <template [ngIf]="item.type !== 'session'">
+              <template [ngIf]="item.name === tableOfContent.name">
+              <option selected value="{{item.id}}">{{item.name}}</option>
+                 </template>
+                 <template [ngIf]="item.name !== tableOfContent.name">
+              <option value="{{item.id}}">{{item.name}}</option>
+                 </template>
+                 </template>
+                 
+               </template>
+            </select>
+    </div>
+    <div class="col-xs-4 btn-refresh">
+      <button id="btn-refresh-tdm" [disabled]="!isChangedToc" (click)="refreshToc()" name="refrechContext" class="glyphicon glyphicon-refresh btn btn-sm {{!isChangedToc? '' : 'active'}}"
+        title="Réinitialiser"></button>
+
+        <button id="btn-config-tdm" (click)="switchCollapse('CONFIG')" class="glyphicon glyphicon-cog btn btn-sm" title="Configuration"></button>
+    </div>
+
+
+  </div>
+  <div id="nav-scroll" class="nav-tabs-scroll">
+    <ul class="nav nav-tabs" role="tablist">
+      <template ngFor let-item [ngForOf]="tableOfContent.domaines" let-i="index">
+        <li role="presentation" class="{{item.active ? 'active' : ''}}">
+          <a (click)="changeDomaine(item.code,tableOfContent.domaines)" id="onglet_{{item.code}}" class="{{item.checked ? 'activeDomaine' : ''}}">
+            {{item.title}}</a>
+        </li>
+      </template>
+    </ul>
+  </div>
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active">
+      <div class="orange-treeview">
+        <template ngFor let-itemD [ngForOf]="tableOfContent.domaines" let-iD="index">
+          <template [ngIf]="itemD.active">
+            <div class="checkbox">
+              <label id="domaine_{{itemD.code}}_label" style="margin-left: -23px;">
+                      <input type="checkbox" id="domaine_{{itemD.code}}" (click)="checkDomaine(itemD)" checked="{{itemD.checked ? 'checked': ''}}">
+                      <span>{{itemD.title}} </span>
+                    </label>
+            </div>
+            <template ngFor let-item [ngForOf]="itemD.services" let-i="index">
+              <div class="treeview-level">
+                <div class="treeview-header">
+                  <a class="treeview-open glyphicon {{item.collapseIn ? 'glyphicon-chevron-right': 'glyphicon-chevron-down'}}" (click)="collapse(item)"></a>
+                  <div class="checkbox {{item.allNodescheck ? '': 'notall-check'}}">
+                    <label>
+                      <input type="checkbox" id="service_{{item.code}}" checked="{{item.checked ? 'checked': ''}}" (click)="checkService(item,itemD)">
+                      <span>{{item.title}}</span>
+                    </label>
+                  </div>
+                  <button class="btn btn-icon" (click)="collapseSlider(item)">
+                    <i class="icon-sun"></i>
+                    <span><span id="slidertree1-info" title="Transparence">{{item.opacity}}</span>%</span>
+                  </button>
+                </div>
+                <div class="treeview-sublevel" [collapse]="item.collapseIn">
+                  <app-tree-view [tree]="item.Layer" [currenttableOfContent]="tableOfContent" [domaine]="itemD" [service]="item"></app-tree-view>
+                </div>
+              </div>
+            </template>
+          </template>
+        </template>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="shutter-subitem mobile" [collapse]="isCollapseSlider">
+  <template [ngIf]="currentServiceForSlider !== null">
+    <div class="shutter-subheader">
+      <span>Régler la transparence de :</span>
+      <h3>{{currentServiceForSlider.title}}</h3>
+    </div>
+    <div class="shutter-subcontent">
+      <div class="progress-slider">
+
+        <div id="slider">
+          <md-slider title="Transparence" min="1" max="100" step="1" (change)="chageOpacity($event)" value="{{currentServiceForSlider.opacity}}"></md-slider>
+        </div>
+        <div class="progress-slider-infos" title="Transparence">
+          <i class="icon-sun"></i>
+          <span><span id="slider3-info">{{currentServiceForSlider.opacity}}</span>%</span>
+        </div>
+
+      </div>
+    </div>
+    <div>
+      <button id="transparency-shutter-btn" type="button" class="btn btn-primary" (click)="switchCollapse('TOC')">Fermer</button>
+    </div>
+  </template>
+</div>
+
+<div class="shutter-subitem mobile" [collapse]="isCollapseConfig">
+  <h4>mes TDM favorites</h4>
+  <hr>
+  <h5><span style="font-weight: bold">Pour le profil </span>{{currentProfile}}</h5>
+  <div *ngIf="isTocSaved && currentCrudTOC !== 'undefined'">
+    <span class="glyphicon glyphicon-ok" style="color: #32c832"></span><span style="padding-left: 10px;">{{currentCrudTOC.name}} enregistrée</span>
+  </div>
+
+  <div class="rows-border">
+    <template ngFor let-item [ngForOf]="allfavoriteTableOfContent" let-i="index">
+      <template [ngIf]="i < 3">
+        <div class="favorite-toc {{item.active ?'toc-in-use':''}}">
+          <div class="col-xs-3">
+            <button id="saveToc" (click)="confirmSaveToc(item)" class="glyphicon glyphicon-floppy-disk favorite-icons {{item.active ?'toc-in-use':''}} {{(isTocSaved && item.active) ?'err-name':''}}"></button>
+          </div>
+          <div class="col-xs-6 favorite-name">
+            <span>{{item.name}}</span>
+          </div>
+          <div class="col-xs-3 icon-pos">
+            <button id="deleteToc" (click)="manage('DELETE',item)" class="glyphicon glyphicon-trash favorite-icons {{item.active ?'toc-in-use':''}}"></button>
+            <button id="editToc" (click)="manage('EDIT',item)" class="glyphicon glyphicon-edit favorite-icons {{item.active ?'toc-in-use':''}}"></button>
+          </div>
+        </div>
+      </template>
+    </template>
+    <template ngFor let-item [ngForOf]="nbrEmptyFavoriteTableOfContent" let-i="index" class="row-border">
+      <div class="add-favorite-toc">
+        <div class="add-toc-icon">
+          <a id="addToc" href="#" (click)="manage('ADD',null)" class="add-icon">+</a>
+        </div>
+        <div>
+        </div>
+      </div>
+    </template>
+  </div>
+  <div>
+    <button id="close-config-btn" type="button" class="btn btn-default btn-fermer" (click)="switchCollapse('TOC')">Fermer</button>
+  </div>
+
+</div>
+
+<div class="shutter-subitem mobile" [collapse]="isCollapseCrud">
+
+  <div *ngIf="crudAction === 'ADD'">
+    <h4>Nom de la TDM favorite</h4>
+    <div>
+      <input id="addFavorite" type="text" [(ngModel)]='currentCrudTOC.name' (keyup)='testExistName()' class="toc-input"
+      />
+      <span class="{{testExistNameBool? 'err-name':'exist'}}">Nom de la TDM favorite déjà utilisé !</span>
+    </div>
+    <div class="col-xs-9">
+      <button id="cancelAddFavorite" type="button" class="btn btn-default" (click)="switchCollapse('CONFIG')">Annuler</button>
+      <button [disabled]="!testExistNameBool  || currentCrudTOC.name.length <= 0 || currentCrudTOC.name.length >= 20"
+        id="validateAddFavorite" type="button" class="btn validate-btn" (click)="createFavorite()">Valider</button>
+
+    </div>
+  </div>
+
+  <div *ngIf="crudAction === 'EDIT'">
+    <h4>Modifier le nom de la TDM favorite</h4>
+    <div>
+      <input id="editFavorite" type="text" [(ngModel)]='tocToEdit' (keyup)='testExistNameEdit()' class="toc-input" />
+      <span class="{{testExistNameBool? 'err-name':'exist'}}">Nom de la TDM favorite déjà utilisé !</span>
+    </div>
+    <div class="col-xs-9">
+      <button id="cancelEditFavorite" type="button" class="btn btn-default" (click)="switchCollapse('CONFIG')">Annuler</button>
+      <button id="validateEditFavorite" [disabled]="!testExistNameBool  || tocToEdit.length <= 0 || tocToEdit.length >= 20" type="button"
+        class="btn validate-btn" (click)="editFavorite()">Valider</button>
+
+    </div>
+  </div>
+
+  <div *ngIf="crudAction === 'DELETE'">
+    <h4>Confirmez-vous la suppression ? {{currentCrudTOC.name}}</h4>
+    <div class="col-xs-9">
+      <button id="cancelDeleteFavorite" type="button" class="btn btn-default" (click)="switchCollapse('CONFIG')">Non</button>
+      <button id="validateDeleteFavorite" type="button" class="btn btn-primary" (click)="deleteFavorite()">Oui</button>
+    </div>
+
+  </div>
+
+  <div *ngIf="crudAction === 'SAVE'">
+    <h4>Confirmez-vous le remplacement de la TDM: " {{currentCrudTOC.name}} "</h4>
+    <div class="col-xs-9">
+
+      <button id="cancelSaveFavorite" type="button" class="btn btn-default" (click)="switchCollapse('CONFIG')">Non</button>
+      <button id="validateSaveFavorite" type="button" class="btn btn-primary" (click)="saveFavorite()">Oui</button>
+
+
+    </div>
+
+  </div>
+
+  <div>
+
+  </div>
+</div>

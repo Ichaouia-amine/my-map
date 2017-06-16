@@ -1,5 +1,11 @@
 {
     "home" : "accueil",
     "about" : "help",
-    "contact" : "Contact"
+    "contact" : "Contact",
+    "navbarComponent":{
+        "search":"Rechercher / Localiser",
+        "tableOfContent":"Table des matières",
+        "baseLyers":"Fonds de cartes"
+
+    }
 }

@@ -1,0 +1,295 @@
+[
+    {
+        "name": "context1",
+        "title": "SOL",
+        "active": true,
+        "domains": [
+            {
+                "name": "admin",
+                "title": "Admin",
+                "checked": true,
+                "active": true,
+                "services": [
+                    {
+                        "name": "contours",
+                        "title": "Contours",
+                        "serverType": "geoserver",
+                        "useCapabilitiesLikeSource": true,
+                        "oneLayerByService": true,
+                        "urlWMS": "/geoserver/france.admin/wms?",
+                        "urlWFS": "/geoserver/france.admin/wfs?",
+                        "urlGetCapabilities": "/geoserver/france.admin/wms?request=GetCapabilities",
+                        "tileSize": [
+                            512,
+                            512
+                        ],
+                        "ratio": 1,
+                        "params": {
+                            "LAYERS": "",
+                            "FORMAT": "image/png; mode=8bit",
+                            "VERSION": "1.3.1",
+                            "transparent": true
+                        },
+                        "type": "Image",
+                        "sourceType": "ImageWMS",
+                        "opacity": 100,
+                        "zIndex": 110,
+                        "checked": true,
+                        "collapsed": true,
+                        "layersConfig": [
+                            {
+                                "name": "france.admin:commune",
+                                "title": "Commune",
+                                "MinScaleDenominator": null,
+                                "MaxScaleDenominator": null,
+                                "checked": true,
+                                "zIndex": 1,
+                                "isGroup": false,
+                                "visible": false,
+                                "style": [
+                                    {
+                                        "legendUrl": "geoserver/france.admin:/ows?service=WMS&request=GetLegendGraphic&format=image%2Fpng&width=20&height=20&layer=france%3Acommune",
+                                        "title": "Default",
+                                        "name": "default_commune"
+                                    },
+                                    {
+                                        "legendUrl": "geoserver/france.admin:/ows?service=WMS&request=GetLegendGraphic&format=image%2Fpng&width=20&height=20&layer=france%3Acommune",
+                                        "name": "txt_commune",
+                                        "title": "Etiquette_commune"
+                                    },
+                                    {
+                                        "legendUrl": "geoserver/france.admin:/ows?service=WMS&request=GetLegendGraphic&format=image%2Fpng&width=20&height=20&layer=france%3Acommune",
+                                        "name": "other_commune",
+                                        "title": "Other Style"
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "france.admin:limitecommune",
+                                "title": "Limite commune",
+                                "MinScaleDenominator": null,
+                                "MaxScaleDenominator": null,
+                                "checked": true,
+                                "zIndex": 1,
+                                "isGroup": false,
+                                "visible": false,
+                                "style": [
+                                    {
+                                        "legendUrl": "geoserver/france.admin:/ows?service=WMS&request=GetLegendGraphic&format=image%2Fpng&width=20&height=20&layer=france%3Alimitecommune",
+                                        "title": "Default",
+                                        "name": "default_commune"
+                                    },
+                                    {
+                                        "legendUrl": "geoserver/france.admin:/ows?service=WMS&request=GetLegendGraphic&format=image%2Fpng&width=20&height=20&layer=france%3Alimitecommune",
+                                        "name": "txt_limitecommune",
+                                        "title": "Etiquette_limitecommune"
+                                    },
+                                    {
+                                        "legendUrl": "geoserver/france.admin:/ows?service=WMS&request=GetLegendGraphic&format=image%2Fpng&width=20&height=20&layer=france%3Alimitecommune",
+                                        "name": "other_limitecommune",
+                                        "title": "Other Style"
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "commune_groupe",
+                                "title": "Specification Communes",
+                                "checked": true,
+                                "zIndex": 1,
+                                "isGroup": true,
+                                "collapsed": false
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "circuit",
+                "title": "Circuit",
+                "checked": false,
+                "active": false,
+                "services": [
+                    {
+                        "name": "routes",
+                        "title": "Routes",
+                        "serverType": "geoserver",
+                        "useCapabilitiesLikeSource": true,
+                        "oneLayerByService": true,
+                        "urlWMS": "/geoserver/france.routes/wms?",
+                        "urlWFS": "/geoserver/france.routes/wfs?",
+                        "urlGetCapabilities": "/geoserver/france.routes/wms?request=GetCapabilities",
+                        "tileSize": [
+                            512,
+                            512
+                        ],
+                        "ratio": 1,
+                        "params": {
+                            "LAYERS": "",
+                            "FORMAT": "image/png; mode=8bit",
+                            "VERSION": "1.3.1",
+                            "transparent": true
+                        },
+                        "type": "Image",
+                        "sourceType": "ImageWMS",
+                        "opacity": 100,
+                        "zIndex": 110,
+                        "checked": true,
+                        "collapsed": true
+                    }
+                ]
+            },
+            {
+                "name": "D1",
+                "title": "test D1",
+                "checked": false,
+                "active": false,
+                "services": []
+            },
+            {
+                "name": "D2",
+                "title": "test D2",
+                "checked": false,
+                "active": false,
+                "services": []
+            },
+            {
+                "name": "D3",
+                "title": "test D3",
+                "checked": false,
+                "active": false,
+                "services": []
+            }
+        ]
+    },
+    {
+        "name": "context2",
+        "title": "eau",
+        "active": false,
+        "domains": [
+            {
+                "name": "eau",
+                "title": "EAU",
+                "checked": true,
+                "active": true,
+                "services": [
+                    {
+                        "name": "bdt",
+                        "title": "BDT",
+                        "serverType": "geoserver",
+                        "useCapabilitiesLikeSource": false,
+                        "oneLayerByService": false,
+                        "urlWMS": "/geoserver/france.bdt/wms?",
+                        "urlWFS": "/geoserver/france.bdt/wfs?",
+                        "urlGetCapabilities": "/geoserver/france.bdt/wms?request=GetCapabilities",
+                        "tileSize": [
+                            512,
+                            512
+                        ],
+                        "ratio": 1,
+                        "params": {
+                            "LAYERS": "",
+                            "FORMAT": "image/png; mode=8bit",
+                            "VERSION": "1.3.1",
+                            "transparent": true
+                        },
+                        "type": "Image",
+                        "sourceType": "ImageWMS",
+                        "opacity": 100,
+                        "zIndex": 110,
+                        "checked": true,
+                        "collapsed": true,
+                        "Layer": [
+                            {
+                                "name": "canalisation_eau",
+                                "title": "Canalisation eau",
+                                "MinScaleDenominator": null,
+                                "MaxScaleDenominator": null,
+                                "checked": true,
+                                "zIndex": 1,
+                                "isGroup": true,
+                                "visible": false,
+                                "style": [
+                                    {
+                                        "legendUrl": "geoserver/france.bdt/ows?service=WMS&request=GetLegendGraphic&format=image%2Fpng&width=20&height=20&layer=france%3Alimitecommune",
+                                        "title": "Default",
+                                        "name": "default_canalisation_eau"
+                                    },
+                                    {
+                                        "legendUrl": "geoserver/france.bdt/ows?service=WMS&request=GetLegendGraphic&format=image%2Fpng&width=20&height=20&layer=france%3Alimitecommune",
+                                        "name": "txt_canalisation_eau",
+                                        "title": "Etiquette"
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "reservoir_eau",
+                                "title": "Reservoir eau",
+                                "MinScaleDenominator": null,
+                                "MaxScaleDenominator": null,
+                                "checked": true,
+                                "zIndex": 1,
+                                "isGroup": true,
+                                "visible": false,
+                                "style": [
+                                    {
+                                        "legendUrl": "geoserver/france.bdt/ows?service=WMS&request=GetLegendGraphic&format=image%2Fpng&width=20&height=20&layer=france%3reservoir_eau",
+                                        "title": "Default",
+                                        "name": "default_reservoir_eau"
+                                    },
+                                    {
+                                        "legendUrl": "geoserver/france.bdt/ows?service=WMS&request=GetLegendGraphic&format=image%2Fpng&width=20&height=20&layer=france%3Areservoir_eau",
+                                        "name": "txt_reservoir_eau",
+                                        "title": "Etiquette"
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "hydronomie",
+                                "title": "Hydronomie",
+                                "MinScaleDenominator": null,
+                                "MaxScaleDenominator": null,
+                                "checked": true,
+                                "zIndex": 1,
+                                "isGroup": true,
+                                "visible": false,
+                                "style": [
+                                    {
+                                        "legendUrl": "geoserver/france.bdt/ows?service=WMS&request=GetLegendGraphic&format=image%2Fpng&width=20&height=20&layer=france%3Ahydronomie",
+                                        "title": "Default",
+                                        "name": "default_hydronomie"
+                                    },
+                                    {
+                                        "legendUrl": "geoserver/france.bdt/ows?service=WMS&request=GetLegendGraphic&format=image%2Fpng&width=20&height=20&layer=france%3Ahydronomie",
+                                        "name": "txt_hydronomie",
+                                        "title": "Etiquette"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "D1",
+                "title": "test D1",
+                "checked": false,
+                "active": false,
+                "services": []
+            },
+            {
+                "name": "D2",
+                "title": "test D2",
+                "checked": false,
+                "active": false,
+                "services": []
+            },
+            {
+                "name": "D3",
+                "title": "test D3",
+                "checked": false,
+                "active": false,
+                "services": []
+            }
+        ]
+    }
+]

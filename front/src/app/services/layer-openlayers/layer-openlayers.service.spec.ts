@@ -1,7 +1,7 @@
 /* tslint:disable:no-unused-variable */
 import * as ol from 'openlayers';
 import { TestBed, async, inject } from '@angular/core/testing';
-import { LayerService } from './layer.service';
+import { LayerOpenlayersService } from './layer-openlayers.service';
 
 describe('Service: Layer', () => {
   let dataFeature: any;
@@ -83,61 +83,61 @@ describe('Service: Layer', () => {
       opacity: 1
     };
     TestBed.configureTestingModule({
-      providers: [LayerService]
+      providers: [LayerOpenlayersService]
     });
   });
-  it('createLayer', inject([LayerService], (service: LayerService) => {
+  it('createLayer', inject([LayerOpenlayersService], (service: LayerOpenlayersService) => {
     const layer: ol.layer.Layer = service.createLayer(dataLayer, 'EPSG:3857', 'test', null);
     expect(layer).toBeDefined();
   }));
-  it('isDefined', inject([LayerService], (service: LayerService) => {
+  it('isDefined', inject([LayerOpenlayersService], (service: LayerOpenlayersService) => {
     const isDefined: boolean = service.isDefined(service);
     expect(isDefined).toBe(true);
   }));
-  it('isDefinedAndNotNull', inject([LayerService], (service: LayerService) => {
+  it('isDefinedAndNotNull', inject([LayerOpenlayersService], (service: LayerOpenlayersService) => {
     const isdefOrNotNull: boolean = service.isDefinedAndNotNull(service);
     expect(isdefOrNotNull).toBe(true);
   }));
-  it('detectLayerType', inject([LayerService], (service: LayerService) => {
+  it('detectLayerType', inject([LayerOpenlayersService], (service: LayerOpenlayersService) => {
     const type: string = service.detectLayerType(dataLayerForTypeTest);
     expect(type).toBe('Image');
   }));
-  it('createSource', inject([LayerService], (service: LayerService) => {
+  it('createSource', inject([LayerOpenlayersService], (service: LayerOpenlayersService) => {
     const source: ol.source.Source = service.createSource(dataSource, 'EPSG:2154');
     expect(source instanceof ol.source.Source).toBe(true);
   }));
-  it('createFeature', inject([LayerService], (service: LayerService) => {
+  it('createFeature', inject([LayerOpenlayersService], (service: LayerOpenlayersService) => {
     const feature: ol.Feature = service.createFeature(dataFeature, 'EPSG:3857');
     expect(feature.getGeometry() instanceof ol.geom.Point).toBe(true);
   }));
-  it('createGeometry', inject([LayerService], (service: LayerService) => {
+  it('createGeometry', inject([LayerOpenlayersService], (service: LayerOpenlayersService) => {
     const point: ol.geom.Geometry = service.createGeometry(dataFeature, 'EPSG:3857');
     expect(point instanceof ol.geom.Point).toBe(true);
   }));
-  it('createStyle', inject([LayerService], (service: LayerService) => {
+  it('createStyle', inject([LayerOpenlayersService], (service: LayerOpenlayersService) => {
     const style: ol.style.Style = service.createStyle(dataStyle);
     expect(style instanceof ol.style.Style).toBe(true);
   }));
-  it('isArray', inject([LayerService], (service: LayerService) => {
+  it('isArray', inject([LayerOpenlayersService], (service: LayerOpenlayersService) => {
     const val: boolean = service.isArray('string');
     expect(val).toBe(false);
   }));
-  it('createGroup', inject([LayerService], (service: LayerService) => {
+  it('createGroup', inject([LayerOpenlayersService], (service: LayerOpenlayersService) => {
     const groupe: ol.layer.Group = service.createGroup('nameG');
     expect(groupe.get('name')).toBe('nameG');
   }));
-  it('isValidStamenLayer', inject([LayerService], (service: LayerService) => {
+  it('isValidStamenLayer', inject([LayerOpenlayersService], (service: LayerOpenlayersService) => {
     const val: boolean = service.isValidStamenLayer('terrain');
     expect(val).toBe(true);
   }));
-  it('getGroup', inject([LayerService], (service: LayerService) => {
+  it('getGroup', inject([LayerOpenlayersService], (service: LayerOpenlayersService) => {
     const layers: ol.Collection<any> = new ol.Collection<any>();
     layers.insertAt(0, service.createGroup('nameG'));
     layers.insertAt(1, service.createGroup('nameG1'));
     const groupe: ol.layer.Group = service.getGroup(layers, 'nameG1');
     expect(groupe.get('name')).toBe('nameG1');
   }));
-  it('should ...', inject([LayerService], (service: LayerService) => {
+  it('should ...', inject([LayerOpenlayersService], (service: LayerOpenlayersService) => {
     expect(service).toBeTruthy();
   }));
 });

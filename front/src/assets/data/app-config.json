@@ -1,4 +1,5 @@
 {
     "title":"my-map",
-    "map_config_url":null
+    "map_config_url":"/assets/data/map-config.json",
+    "layers_config_url":"/assets/data/tablesofcontent-layers.json"
 }

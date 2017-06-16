@@ -1,5 +1,11 @@
 {
     "home" : "Home",
     "about" : "About",
-    "contact" : "Contact"
+    "contact" : "Contact",
+    "navbarComponent":{
+        "search":"Search / Localisation",
+        "tableOfContent":"Table of contents",
+        "baseLyers":"Base Layers"
+
+    }
 }

@@ -1,0 +1,51 @@
+<div class="navbar navbar-inverse navbar-fixed-left" role="navigation">
+  <div class="navbar-header">
+    <button type="button" class="{{isCollapsed ? 'not-active' : 'active'}} navbar-toggle" (click)="toggleCollapse()">
+      <span class="sr-only">Toggle navigation</span>
+      <i class="icon-menu"></i>
+    </button>
+
+    <!--button type="button" class="visible-xs navbar-logout">
+        <i class="icon-logout"></i>
+      </button-->
+    <a class="navbar-brand hidden-xs" href="#"><img height="50px" src="assets/img/globe.png" alt=""></a>
+  </div>
+  <!--div class="navbar-collapse collapse"-->
+  <template [ngIf]="bergerClick">
+    <div class="transparentDiv visible-xs" (click)="toggleCollapse()"></div>
+  </template>
+  <div [collapse]="isCollapsed" class="navbar-collapse scroll-y">
+    <ul class="navbar-nav nav main-nav">
+      <li [class.active]="isOverlayActive('search')"  (click)="toggleOverlay('search')" id="btn_search">
+        <a href="#" title="{{ 'navbarComponent.search' | translate }}"><i class="glyphicon glyphicon-search"></i><span class="visible-xs">{{ 'navbarComponent.search' | translate }}</span></a>
+      </li>
+      <li [class.active]="isOverlayActive('toc')" (click)="toggleOverlay('toc')" id="btn_table_matieres">
+        <a href="#" title="{{ 'navbarComponent.tableOfContent' | translate }}"><i class="glyphicon glyphicon-th-list"></i><span class="visible-xs">{{ 'navbarComponent.tableOfContent' | translate }}</span></a>
+      </li>
+      <li [class.active]="isOverlayActive('fdp')" (click)="toggleOverlay('fdp')" id="btn_fonds_cartes">
+        <a href="#" title="{{ 'navbarComponent.baseLyers' | translate }}"><i class="glyphicon glyphicon-th-large"></i><span class="visible-xs">{{ 'navbarComponent.baseLyers' | translate }}</span></a>
+      </li>
+
+      <!--<li class="" (click)="callPrint()" id="btn_print">
+        <a href="#" title="Imprimer"><i class="icon-print"></i><span class="visible-xs">Imprimer</span></a>
+      </li>
+      <li class="" (click)="callAttributesTable()" id="btn_table_attributaire">
+        <a href="#" title="Table attributaire"><i class="icon-table-attributaire"></i><span class="visible-xs">Table attributaire</span></a>
+      </li>
+      <li class="" (click)="callAssistance()" id="btn_assistance">
+        <a href="#" title="Aide"><i class="icon-assistance"></i><span class="visible-xs">Aide</span></a>
+      </li>-->
+    </ul>
+    <ul class="navbar-nav nav bottom-nav">
+      <!--<li class="" (click)="callSettings()" id="btn_settings">
+        <a href="#" title="Paramètres"><i class="icon-settings"></i><span class="visible-xs">Paramètres</span></a>
+      </li>-->
+      <!--li [class.active]="isOverlayActive('account')" (click)="toggleOverlay('account')"  id="btn_user">
+        <a href="#" title="Mon compte"><i class="icon-user"></i><span class="visible-xs">Mon compte</span></a>
+      </li-->
+      <!--<li class="" (click)="logout()" id="btn_logout">
+        <a href="#" title="Déconnexion"><i class="icon-logout"></i><span class="visible-xs">Déconnexion</span></a>
+      </li>-->
+    </ul>
+  </div>
+</div>

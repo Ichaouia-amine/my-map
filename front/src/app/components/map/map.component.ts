@@ -1,5 +1,5 @@
 import { Component, OnInit, ElementRef, AfterViewInit } from '@angular/core';
-import { MapToolsService } from "app/services/map-tools/map-tools.service";
+import { MapToolsService } from 'app/services/map-tools/map-tools.service';
 
 @Component({
   selector: 'app-map',
@@ -8,20 +8,20 @@ import { MapToolsService } from "app/services/map-tools/map-tools.service";
 })
 export class MapComponent implements OnInit, AfterViewInit {
   public mapElementRef: ElementRef;
-  constructor(private mapToolsService:MapToolsService) { 
-    
+  constructor(private mapToolsService: MapToolsService) {
+
   }
 
   ngOnInit() {
-    
-    //this.mapToolsService.innitMap(this.mapElementRef);
+
+    // this.mapToolsService.innitMap(this.mapElementRef);
   }
   ngAfterViewInit() {
-    this.mapToolsService.mainMap().subscribe( e => {
+    /*this.mapToolsService.mainMap().subscribe(e => {
       console.log(this.mapElementRef);
-      
-      //this.mapToolsService.setMapTarget(this.mapElementRef);
-    })
+
+      // this.mapToolsService.setMapTarget(this.mapElementRef);
+    })*/
   }
 
 }
