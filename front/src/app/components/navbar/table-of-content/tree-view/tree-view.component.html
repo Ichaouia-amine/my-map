@@ -4,23 +4,23 @@
       <a class="treeview-open glyphicon {{item.collapseIn ? 'glyphicon-chevron-right': 'glyphicon-chevron-down'}}" (click)="collapse(item)"></a>
       <div class="checkbox {{item.allNodescheck ? '': 'notall-check'}}">
         <label>
-          <input type="checkbox" id="layer_groupe_{{item.name}}" (click)="checkNode(item,service,domaine)" checked="{{item.checked ? 'checked': ''}}">
-              <span>{{item.title}}</span>
+          <input type="checkbox" id="layer_groupe_{{item.name}}" (click)="checkNode(item,service,domain)" checked="{{item.checked ? 'checked': ''}}">
+              <span>{{item.Title}}</span>
         </label>
       </div>
     </div>
     <div id="treeview3" class="treeview-sublevel" [collapse]="item.collapseIn">
-      <app-tree-view [tree]="item.Layer" [currenttableOfContent]="currenttableOfContent" [domaine]="domaine" [service]="service"></app-tree-view>
+      <app-tree-view [tree]="item.Layer" [currenttableOfContent]="currenttableOfContent" [domain]="domain" [service]="service"></app-tree-view>
     </div>
   </template>
   <template [ngIf]="! item.isGroup">
     <div class="checkbox {{item.visible ? '': 'disabled-text'}}">
       <label>
         <a href="#" class="collapseLegend glyphicon {{item.collapseLegend ? 'glyphicon-plus': 'glyphicon-minus'}}" (click)="collapseLegende(item)"></a>
-         <input type="checkbox" id="layer_{{item.name}}" (click)="checkNode(item,service,domaine)" checked="{{item.checked ? 'checked': ''}}">
-       <span>{{item.title}}</span>
+         <input type="checkbox" id="layer_{{item.name}}" (click)="checkNode(item,service,domain)" checked="{{item.checked ? 'checked': ''}}">
+       <span>{{item.Title}}</span>
       </label>
-      <div class="legend" [collapse]="item.collapseLegend"><img src="{{item.legendUrl}}&LAYERTITLE=false&ITEMFONTSIZE=10" (click)="collapseLegende(item)"/></div>
+      <div class="legend" [collapse]="item.collapseLegend"><img src="{{item.legendUrl}}" (click)="collapseLegende(item)"/></div>
     </div>
   </template>
 </template>

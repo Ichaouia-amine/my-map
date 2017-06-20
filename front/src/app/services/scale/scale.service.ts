@@ -11,8 +11,8 @@ export class ScaleService {
   initScale(activeConfiguration: any): GeoScaleDto {
     const dto: GeoScaleDto = {
       scaleWidth: 82,
-      currentScale: JSON.parse(activeConfiguration.scaleConfig).scales.find(
-      element => element.zoom === activeConfiguration.zoom)
+      currentScale: activeConfiguration.view.scales.find(
+      element => element.zoom === activeConfiguration.view.zoom)
     };
     this._currentScaleDto = dto;
      return dto;

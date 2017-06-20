@@ -22,7 +22,177 @@
             "resolutions": null,
             "rotation": 0,
             "zoomFactor": null,
-            "projection": "EPSG:3857"
+            "projection": "EPSG:3857",
+            "scales": [
+        {
+          "zoom": 0,
+          "scale": 559082264,
+          "isUsed": false,
+          "length": null,
+          "unit": "km"
+        },
+        {
+          "zoom": 1,
+          "scale": 279541132,
+          "isUsed": false,
+          "length": null,
+          "unit": "km"
+        },
+        {
+          "zoom": 2,
+          "scale": 139770566,
+          "isUsed": true,
+          "length": 5000,
+          "unit": "km"
+        },
+        {
+          "zoom": 3,
+          "scale": 69885283,
+          "isUsed": true,
+          "length": 1000,
+          "unit": "km"
+        },
+        {
+          "zoom": 4,
+          "scale": 34942642,
+          "isUsed": true,
+          "length": 500,
+          "unit": "km"
+        },
+        {
+          "zoom": 5,
+          "scale": 17471321,
+          "isUsed": true,
+          "length": 500,
+          "unit": "km"
+        },
+        {
+          "zoom": 6,
+          "scale": 8735660,
+          "isUsed": true,
+          "length": 200,
+          "unit": "km"
+        },
+        {
+          "zoom": 7,
+          "scale": 4367830,
+          "isUsed": true,
+          "length": 100,
+          "unit": "km"
+        },
+        {
+          "zoom": 8,
+          "scale": 2183915,
+          "isUsed": true,
+          "length": 50,
+          "unit": "km"
+        },
+        {
+          "zoom": 9,
+          "scale": 1091958,
+          "isUsed": true,
+          "length": 20,
+          "unit": "km"
+        },
+        {
+          "zoom": 10,
+          "scale": 545979,
+          "isUsed": true,
+          "length": 10,
+          "unit": "km"
+        },
+        {
+          "zoom": 11,
+          "scale": 272989,
+          "isUsed": true,
+          "length": 5,
+          "unit": "km"
+        },
+        {
+          "zoom": 12,
+          "scale": 136495,
+          "isUsed": true,
+          "length": 2,
+          "unit": "km"
+        },
+        {
+          "zoom": 13,
+          "scale": 68247,
+          "isUsed": true,
+          "length": 1000,
+          "unit": "m"
+        },
+        {
+          "zoom": 14,
+          "scale": 34124,
+          "isUsed": true,
+          "length": 500,
+          "unit": "m"
+        },
+        {
+          "zoom": 15,
+          "scale": 17062,
+          "isUsed": true,
+          "length": 500,
+          "unit": "m"
+        },
+        {
+          "zoom": 16,
+          "scale": 8531,
+          "isUsed": true,
+          "length": 200,
+          "unit": "m"
+        },
+        {
+          "zoom": 17,
+          "scale": 4265,
+          "isUsed": true,
+          "length": 100,
+          "unit": "m"
+        },
+        {
+          "zoom": 18,
+          "scale": 2133,
+          "isUsed": true,
+          "length": 50,
+          "unit": "m"
+        },
+        {
+          "zoom": 19,
+          "scale": 1066,
+          "isUsed": true,
+          "length": 20,
+          "unit": "m"
+        },
+        {
+          "zoom": 20,
+          "scale": 533,
+          "isUsed": true,
+          "length": 10,
+          "unit": "m"
+        },
+        {
+          "zoom": 21,
+          "scale": 267,
+          "isUsed": true,
+          "length": 5,
+          "unit": "m"
+        },
+        {
+          "zoom": 22,
+          "scale": 100,
+          "isUsed": true,
+          "length": 5,
+          "unit": "m"
+        },
+        {
+          "zoom": 23,
+          "scale": 50,
+          "isUsed": true,
+          "length": 1,
+          "unit": "m"
+        }
+      ]
         },
         "controls": null,
         "pixelRatio": null,
@@ -202,7 +372,7 @@
                 ]
             },
             {
-                "name": "tableofcontent-layers",
+                "name": "tableOfContent_layers",
                 "layers": []
             }
         ]
@@ -230,7 +400,177 @@
             "resolutions": null,
             "rotation": 0,
             "zoomFactor": null,
-            "projection": "EPSG:3857"
+            "projection": "EPSG:3857",
+            "scales": [
+        {
+          "zoom": 0,
+          "scale": 559082264,
+          "isUsed": false,
+          "length": null,
+          "unit": "km"
+        },
+        {
+          "zoom": 1,
+          "scale": 279541132,
+          "isUsed": false,
+          "length": null,
+          "unit": "km"
+        },
+        {
+          "zoom": 2,
+          "scale": 139770566,
+          "isUsed": true,
+          "length": 5000,
+          "unit": "km"
+        },
+        {
+          "zoom": 3,
+          "scale": 69885283,
+          "isUsed": true,
+          "length": 1000,
+          "unit": "km"
+        },
+        {
+          "zoom": 4,
+          "scale": 34942642,
+          "isUsed": true,
+          "length": 500,
+          "unit": "km"
+        },
+        {
+          "zoom": 5,
+          "scale": 17471321,
+          "isUsed": true,
+          "length": 500,
+          "unit": "km"
+        },
+        {
+          "zoom": 6,
+          "scale": 8735660,
+          "isUsed": true,
+          "length": 200,
+          "unit": "km"
+        },
+        {
+          "zoom": 7,
+          "scale": 4367830,
+          "isUsed": true,
+          "length": 100,
+          "unit": "km"
+        },
+        {
+          "zoom": 8,
+          "scale": 2183915,
+          "isUsed": true,
+          "length": 50,
+          "unit": "km"
+        },
+        {
+          "zoom": 9,
+          "scale": 1091958,
+          "isUsed": true,
+          "length": 20,
+          "unit": "km"
+        },
+        {
+          "zoom": 10,
+          "scale": 545979,
+          "isUsed": true,
+          "length": 10,
+          "unit": "km"
+        },
+        {
+          "zoom": 11,
+          "scale": 272989,
+          "isUsed": true,
+          "length": 5,
+          "unit": "km"
+        },
+        {
+          "zoom": 12,
+          "scale": 136495,
+          "isUsed": true,
+          "length": 2,
+          "unit": "km"
+        },
+        {
+          "zoom": 13,
+          "scale": 68247,
+          "isUsed": true,
+          "length": 1000,
+          "unit": "m"
+        },
+        {
+          "zoom": 14,
+          "scale": 34124,
+          "isUsed": true,
+          "length": 500,
+          "unit": "m"
+        },
+        {
+          "zoom": 15,
+          "scale": 17062,
+          "isUsed": true,
+          "length": 500,
+          "unit": "m"
+        },
+        {
+          "zoom": 16,
+          "scale": 8531,
+          "isUsed": true,
+          "length": 200,
+          "unit": "m"
+        },
+        {
+          "zoom": 17,
+          "scale": 4265,
+          "isUsed": true,
+          "length": 100,
+          "unit": "m"
+        },
+        {
+          "zoom": 18,
+          "scale": 2133,
+          "isUsed": true,
+          "length": 50,
+          "unit": "m"
+        },
+        {
+          "zoom": 19,
+          "scale": 1066,
+          "isUsed": true,
+          "length": 20,
+          "unit": "m"
+        },
+        {
+          "zoom": 20,
+          "scale": 533,
+          "isUsed": true,
+          "length": 10,
+          "unit": "m"
+        },
+        {
+          "zoom": 21,
+          "scale": 267,
+          "isUsed": true,
+          "length": 5,
+          "unit": "m"
+        },
+        {
+          "zoom": 22,
+          "scale": 100,
+          "isUsed": true,
+          "length": 5,
+          "unit": "m"
+        },
+        {
+          "zoom": 23,
+          "scale": 50,
+          "isUsed": true,
+          "length": 1,
+          "unit": "m"
+        }
+      ]
         },
         "controls": null,
         "pixelRatio": null,

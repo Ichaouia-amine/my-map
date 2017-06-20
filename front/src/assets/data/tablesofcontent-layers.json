@@ -3,6 +3,7 @@
         "name": "context1",
         "title": "SOL",
         "active": true,
+        "id":1,
         "domains": [
             {
                 "name": "admin",
@@ -165,6 +166,7 @@
         "name": "context2",
         "title": "eau",
         "active": false,
+        "id":2,
         "domains": [
             {
                 "name": "eau",
@@ -201,12 +203,13 @@
                         "Layer": [
                             {
                                 "name": "canalisation_eau",
-                                "title": "Canalisation eau",
+                                "Title": "Canalisation eau",
                                 "MinScaleDenominator": null,
                                 "MaxScaleDenominator": null,
                                 "checked": true,
                                 "zIndex": 1,
-                                "isGroup": true,
+                                "collapsed": false,
+                                "isGroup": false,
                                 "visible": false,
                                 "style": [
                                     {
@@ -223,12 +226,12 @@
                             },
                             {
                                 "name": "reservoir_eau",
-                                "title": "Reservoir eau",
+                                "Title": "Reservoir eau",
                                 "MinScaleDenominator": null,
                                 "MaxScaleDenominator": null,
                                 "checked": true,
                                 "zIndex": 1,
-                                "isGroup": true,
+                                "isGroup": false,
                                 "visible": false,
                                 "style": [
                                     {
@@ -245,12 +248,12 @@
                             },
                             {
                                 "name": "hydronomie",
-                                "title": "Hydronomie",
+                                "Title": "Hydronomie",
                                 "MinScaleDenominator": null,
                                 "MaxScaleDenominator": null,
                                 "checked": true,
                                 "zIndex": 1,
-                                "isGroup": true,
+                                "isGroup": false,
                                 "visible": false,
                                 "style": [
                                     {

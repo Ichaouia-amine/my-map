@@ -29,9 +29,9 @@
   </div>
   <div id="nav-scroll" class="nav-tabs-scroll">
     <ul class="nav nav-tabs" role="tablist">
-      <template ngFor let-item [ngForOf]="tableOfContent.domaines" let-i="index">
+      <template ngFor let-item [ngForOf]="tableOfContent.domains" let-i="index">
         <li role="presentation" class="{{item.active ? 'active' : ''}}">
-          <a (click)="changeDomaine(item.code,tableOfContent.domaines)" id="onglet_{{item.code}}" class="{{item.checked ? 'activeDomaine' : ''}}">
+          <a (click)="changedomain(item.name,tableOfContent.domains)" id="onglet_{{item.code}}" class="{{item.checked ? 'activedomain' : ''}}">
             {{item.title}}</a>
         </li>
       </template>
@@ -40,12 +40,12 @@
   <div class="tab-content">
     <div role="tabpanel" class="tab-pane active">
       <div class="orange-treeview">
-        <template ngFor let-itemD [ngForOf]="tableOfContent.domaines" let-iD="index">
+        <template ngFor let-itemD [ngForOf]="tableOfContent.domains" let-iD="index">
           <template [ngIf]="itemD.active">
             <div class="checkbox">
-              <label id="domaine_{{itemD.code}}_label" style="margin-left: -23px;">
-                      <input type="checkbox" id="domaine_{{itemD.code}}" (click)="checkDomaine(itemD)" checked="{{itemD.checked ? 'checked': ''}}">
-                      <span>{{itemD.title}} </span>
+              <label id="domain_{{itemD.name}}_label" style="margin-left: -23px;">
+                      <input type="checkbox" id="domain_{{itemD.name}}" (click)="checkdomain(itemD)" checked="{{itemD.checked ? 'checked': ''}}">
+                      <span>{{itemD.title}}</span>
                     </label>
             </div>
             <template ngFor let-item [ngForOf]="itemD.services" let-i="index">
@@ -64,7 +64,7 @@
                   </button>
                 </div>
                 <div class="treeview-sublevel" [collapse]="item.collapseIn">
-                  <app-tree-view [tree]="item.Layer" [currenttableOfContent]="tableOfContent" [domaine]="itemD" [service]="item"></app-tree-view>
+                  <app-tree-view [tree]="item.Layer" [currenttableOfContent]="tableOfContent" [domain]="itemD" [service]="item"></app-tree-view>
                 </div>
               </div>
             </template>
@@ -84,13 +84,12 @@
       <div class="progress-slider">
 
         <div id="slider">
-          <md-slider title="Transparence" min="1" max="100" step="1" (change)="chageOpacity($event)" value="{{currentServiceForSlider.opacity}}"></md-slider>
+          <!--md-slider title="Transparence" min="1" max="100" step="1" (change)="chageOpacity($event)" value="{{currentServiceForSlider.opacity}}"></md-slider-->
         </div>
         <div class="progress-slider-infos" title="Transparence">
           <i class="icon-sun"></i>
           <span><span id="slider3-info">{{currentServiceForSlider.opacity}}</span>%</span>
         </div>
-
       </div>
     </div>
     <div>
@@ -145,7 +144,7 @@
   <div *ngIf="crudAction === 'ADD'">
     <h4>Nom de la TDM favorite</h4>
     <div>
-      <input id="addFavorite" type="text" [(ngModel)]='currentCrudTOC.name' (keyup)='testExistName()' class="toc-input"
+      <input id="addFavorite" type="text"  (keyup)='testExistName()' class="toc-input"
       />
       <span class="{{testExistNameBool? 'err-name':'exist'}}">Nom de la TDM favorite déjà utilisé !</span>
     </div>
@@ -160,7 +159,7 @@
   <div *ngIf="crudAction === 'EDIT'">
     <h4>Modifier le nom de la TDM favorite</h4>
     <div>
-      <input id="editFavorite" type="text" [(ngModel)]='tocToEdit' (keyup)='testExistNameEdit()' class="toc-input" />
+      <input id="editFavorite" type="text"  (keyup)='testExistNameEdit()' class="toc-input" />
       <span class="{{testExistNameBool? 'err-name':'exist'}}">Nom de la TDM favorite déjà utilisé !</span>
     </div>
     <div class="col-xs-9">

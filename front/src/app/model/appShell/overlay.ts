@@ -7,4 +7,5 @@ export interface Overlay {
   mobileReady: boolean;
   iconClass: string;
   title: string;
+  firstLoad: boolean;
 }

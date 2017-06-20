@@ -25,15 +25,15 @@ export class MapToolsService {
   public _mainMap: ol.Map = null;
   public _currentMapSettings: any = null;
   public currentMapSettingsListener: Subject<any> = new Subject<any>();
-   private location: ol.Geolocation;
-   public currentDomaineCode: string;
+  private location: ol.Geolocation;
+  public currentDomainCode: string;
   public mainMapListener: Subject<any> = new Subject<any>();
   public _currentTableOfContent: TableOfContent;
   public currentTableOfContentListener: Subject<TableOfContent> = new Subject<TableOfContent>();
   public _allTablesOfContent: TableOfContent[];
   public allTablesOfContentListener: Subject<TableOfContent[]> = new Subject<TableOfContent[]>();
   public currentScaleDtoSubject: Subject<any> = new Subject<any>();
-   public oldtableOfContent: TableOfContent;
+  public oldtableOfContent: TableOfContent;
   public baseLayer_ex: any[];
   public baseLayer_in: any[];
   private baseLayerDtoSubject_ex: Subject<any> = new Subject<any>();
@@ -66,6 +66,13 @@ export class MapToolsService {
     private locationService: LocationService,
     private scaleService: ScaleService,
     private http: Http, private utilsService: UtilsService, private tableOfContentService: TableOfContentService) {
+    this.currentdomainCode = '';
+    this.currentScale().subscribe((e: any) => {
+      this.currentScaleDto = e;
+      if (typeof this._currentTableOfContent !== 'undefined') {
+        this.refrechVisibilityByResolution(this._currentTableOfContent, e.currentScale.scale);
+      }
+    });
     this.settingsService.appSettings().subscribe(settings => {
       let url: string = MAP_CONFIG_URL;
       if (settings.map_config_url !== null) {
@@ -73,8 +80,9 @@ export class MapToolsService {
       }
       this.httpService.getJson(url).subscribe(mapConfigs => {
         this._currentMapSettings = (<any[]>mapConfigs).find(e => e.active);
-        this.currentMapSettingsListener.next(this._currentMapSettings );
-        this._mainMap = this.mapOpenlayersService.innitMap( this._currentMapSettings );
+        this.currentMapSettingsListener.next(this._currentMapSettings);
+        this._mainMap = this.mapOpenlayersService.innitMap(this._currentMapSettings);
+        this.initScale();
         this.mainMapListener.next(this._mainMap);
         this.loadAllTableOfContents(settings.layers_config_url);
       });
@@ -94,7 +102,6 @@ export class MapToolsService {
       domain.services.forEach(service => {
         if (this.utilsService.isDefined(service.useCapabilitiesLikeSource) && service.useCapabilitiesLikeSource) {
           this.tableOfContentService.getGETCapabilitiesByMapService(service.urlGetCapabilities).subscribe(cap => {
-            console.log(service.title);
             service.Layer = this.mapOpenlayersService.readGetCapabilities(cap);
             if (this.utilsService.isDefined(service.layersConfig)) {
               service.layersConfig.forEach(layerConfig => {
@@ -105,11 +112,10 @@ export class MapToolsService {
               })
             } else {
               service.Layer.forEach(capLayer => {
-                  this.tableOfContentService.addFunctionelAttributesForGetCapabilitiesLayer(capLayer,
-                    null, service.name, service.name);
-                });
+                this.tableOfContentService.addFunctionelAttributesForGetCapabilitiesLayer(capLayer,
+                  null, service.name, service.name);
+              });
             }
-            console.log(service.Layer);
           })
         }
       });
@@ -131,7 +137,7 @@ export class MapToolsService {
       this.allTablesOfContentListener.next(this._allTablesOfContent);
     });
   }
-isContainXY(extent: ol.Extent, x: number, y: number) {
+  isContainXY(extent: ol.Extent, x: number, y: number) {
     return this.mapOpenlayersService.isContainXY(extent, x, y);
   }
 
@@ -458,7 +464,9 @@ isContainXY(extent: ol.Extent, x: number, y: number) {
     this.allTableOfContentDtoSubject.next(this._alltableOfContent);
   }*/
   public initContext() {
-    this.clearLayerGroupe('tableOfContent_layers');
+    if (this._mainMap !== undefined && this._mainMap !== null )  {
+      this.clearLayerGroupe('tableOfContent_layers');
+    }
     let index = 0;
     if (typeof this._currentTableOfContent.domains !== 'undefined') {
       this._currentTableOfContent.domains.forEach(domain => {
@@ -482,9 +490,10 @@ isContainXY(extent: ol.Extent, x: number, y: number) {
           this.refrechDomainCheck(domain);
           domain.active = false;
           if (index === 0 && this.currentdomainCode === '') {
+            console.log(index);
             domain.active = true;
           }
-          if (this.currentdomainCode === domain.code) {
+          if (this.currentdomainCode === domain.name) {
             domain.active = true;
           }
           index++;
@@ -499,7 +508,7 @@ isContainXY(extent: ol.Extent, x: number, y: number) {
       this._currentTableOfContent.domains.forEach(domain => {
         if (typeof domain !== 'undefined') {
           if (currentdomainCode !== '') {
-            if (domain.code === currentdomainCode) {
+            if (domain.name === currentdomainCode) {
               domain.active = true;
             } else {
               domain.active = false;
@@ -806,7 +815,7 @@ isContainXY(extent: ol.Extent, x: number, y: number) {
       }
       if (firstZoomIndex) {
         this.mapOpenlayersService.setMapZoom(this._mainMap,
-        JSON.parse(this._currentMapSettings.projlocalisationConfig.gpsZoom));
+          JSON.parse(this._currentMapSettings.projlocalisationConfig.gpsZoom));
         this.sendLogs(coordinates, this.getMapZoom());
         firstZoomIndex = false;
       }
@@ -840,7 +849,7 @@ isContainXY(extent: ol.Extent, x: number, y: number) {
   }
   changeCheckDomain(domain: TableOfContentDomain, currentTableOfContent) {
     const oldtableOfContent = this.tableOfContentService.allOldtableOfContent
-    .find(element => element.id === Number.parseInt(this._currentTableOfContent.id));
+      .find(element => element.id === Number.parseInt(this._currentTableOfContent.id));
     this.tableOfContentService.changeCheckDomain(domain);
     this._isChangedToc = this.tableOfContentService.checkIfTableOfContentIsChanged(oldtableOfContent, this._currentTableOfContent);
     this.isChangedTocSubject.next(this._isChangedToc);
@@ -848,14 +857,14 @@ isContainXY(extent: ol.Extent, x: number, y: number) {
   }
   changeCheckService(service: TableOfContentServiceObject, currentTableOfContent) {
     const oldtableOfContent = this.tableOfContentService.allOldtableOfContent.
-    find(element => element.id === Number.parseInt(this._currentTableOfContent.id));
+      find(element => element.id === Number.parseInt(this._currentTableOfContent.id));
     this.tableOfContentService.changeCheckService(service);
     this._isChangedToc = this.tableOfContentService.checkIfTableOfContentIsChanged(oldtableOfContent, this._currentTableOfContent);
     this.isChangedTocSubject.next(this._isChangedToc);
   }
   changeCheckNode(node: TableOfContentNode, checked: boolean, currentTableOfContent) {
     const oldtableOfContent = this.tableOfContentService.allOldtableOfContent
-    .find(element => element.id === Number.parseInt(this._currentTableOfContent.id));
+      .find(element => element.id === Number.parseInt(this._currentTableOfContent.id));
     this.tableOfContentService.changeCheckNode(node, checked);
     this._isChangedToc = this.tableOfContentService.checkIfTableOfContentIsChanged(oldtableOfContent, this._currentTableOfContent);
     this.isChangedTocSubject.next(this._isChangedToc);
@@ -909,9 +918,9 @@ isContainXY(extent: ol.Extent, x: number, y: number) {
       for (let i = 0; i < service.layersList.length; i++) {
         if (service.layersList[i].visible) {
           if (i !== 0) {
-            layersName = layersName + ',' + service.layersList[i].code;
+            layersName = layersName + ',' + service.layersList[i].name;
           } else {
-            layersName = service.layersList[i].code;
+            layersName = service.layersList[i].name;
           }
         }
       }
@@ -928,6 +937,7 @@ isContainXY(extent: ol.Extent, x: number, y: number) {
     this.mapOpenlayersService.insertLayersInGroup(this._mainMap, groupName, layer);
   }
   refrechService(service: TableOfContentServiceObject) {
+     console.log(service);
     service.layersList = [];
     if (typeof service.Layer !== 'undefined') {
       service.Layer.forEach(child => {

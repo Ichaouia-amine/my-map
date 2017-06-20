@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Overlay } from "app/model/appShell/overlay";
+import { Overlay } from 'app/model/appShell/overlay';
 
 
 @Injectable()
@@ -12,6 +12,7 @@ export class OverlayService {
     constructor() {
         this.overlayList = [{
             name: 'search',
+            firstLoad: true,
             active: false,
             hasMapVisible: false,
             isMinimizable: true,
@@ -21,6 +22,7 @@ export class OverlayService {
             title: 'Rechercher / Localiser'
         }, {
             name: 'toc',
+            firstLoad: true,
             active: false,
             hasMapVisible: true,
             isMinimizable: false,
@@ -30,6 +32,7 @@ export class OverlayService {
             title: 'Table des matières'
         }, {
             name: 'fdp',
+            firstLoad: true,
             active: false,
             hasMapVisible: true,
             isMinimizable: false,
@@ -39,6 +42,7 @@ export class OverlayService {
             title: 'Fonds de cartes'
         }, {
             name: 'account',
+            firstLoad: true,
             active: false,
             hasMapVisible: false,
             isMinimizable: false,
@@ -52,6 +56,7 @@ export class OverlayService {
     }
 
     public toggleOverlay(name: string): void {
+        this.getOverlay(name).firstLoad = false;
         if (this.isOvertlaySelected(name)) {
             this.getActiveOverlay().active = false;
         } else if (this.getOverlay(name).isMinimized) {
@@ -112,6 +117,9 @@ export class OverlayService {
         // console.log('ljkshlljkfslkdqgjjlgsdjnk');
         // console.log(this.getMinimizedOverlays().length);
         return this.getMinimizedOverlays().length > 0; // this.getMinimizedOverlays !== undefined;
+    }
+    public isFirstLoad(name: string) {
+        return this.getOverlay(name).firstLoad;
     }
 
 

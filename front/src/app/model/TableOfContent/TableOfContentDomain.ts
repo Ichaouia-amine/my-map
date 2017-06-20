@@ -1,6 +1,6 @@
 import { TableOfContentServiceObject } from './TableOfContentService';
 export interface TableOfContentDomain {
-  code: string;
+  name: string;
    title: string;
    checked: boolean;
    active: boolean;

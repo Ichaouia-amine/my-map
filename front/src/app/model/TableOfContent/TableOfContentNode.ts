@@ -1,5 +1,5 @@
 export interface TableOfContentNode {
-  code: string;
+  name: string;
   Name: string;
   title: string;
   Abstract: string;

@@ -25,7 +25,7 @@ export class TableOfContentComponent implements OnInit {
   private listLength = '';
   public isChangedToc: boolean;
   private ischagedTocExecution: boolean;
-  private currentDomaineCode: string;
+  private currentDomainCode: string;
    public currentServiceForSlider: TableOfContentServiceObject = null;
   public crudAction: string;
   public currentCrudTOC: any;
@@ -36,7 +36,7 @@ export class TableOfContentComponent implements OnInit {
   public isTocSaved: boolean;
   private currentProfile: string;
   constructor(private mapToolsService: MapToolsService, private tableOfContentService: TableOfContentService) {
-    this.currentDomaineCode = '';
+    this.currentDomainCode = '';
     this.currentProfile = '';
     this.collapseItem = 'TOC';
     this.crudAction = '';
@@ -50,18 +50,18 @@ export class TableOfContentComponent implements OnInit {
    this.ischagedTocExecution = false;
     this.tableOfContent = this.mapToolsService._currentTableOfContent;
     this.mapToolsService.initContext();
+    this.tableOfContentService.addToOldTocList(this.tableOfContent, false);
     this.alltableOfContent = this.mapToolsService._allTablesOfContent;
     this.allfavoriteTableOfContent = this.alltableOfContent
-    .filter(element => element.contextType !== 'session' && element.contextType !== 'standard');
+    .filter(element => element.type !== 'session' && element.type !== 'standard');
     this.setNbrOfEmptyToc();
     this.mapToolsService.currentTableOfContent().subscribe((element: any) => {
       this.tableOfContent = element;
       if (!this.ischagedTocExecution) {
         this.mapToolsService.initContext();
-        console.log('init');
-
+        this.tableOfContentService.addToOldTocList(this.tableOfContent, false);
       }
-      this.mapToolsService.refrechTableOfContent(this.currentDomaineCode);
+      this.mapToolsService.refrechTableOfContent(this.currentDomainCode);
     });
     this.mapToolsService.currentScale().subscribe((e: any) => {
       if (typeof this.tableOfContent !== 'undefined') {
@@ -93,12 +93,12 @@ export class TableOfContentComponent implements OnInit {
       this.mapToolsService.initLegendCollapse(element);
     });
   }
-  changeDomaine(domaineName: string, domaines: TableOfContentDomain[]) {
-    domaines.forEach(d => {
-      if (d.code === domaineName) {
+  changedomain(domainName: string, domains: TableOfContentDomain[]) {
+    domains.forEach(d => {
+      if (d.name === domainName) {
         d.active = true;
-        this.currentDomaineCode = domaineName;
-        this.mapToolsService.currentDomaineCode = domaineName;
+        this.currentDomainCode = domainName;
+        this.mapToolsService.currentDomainCode = domainName;
       } else {
         d.active = false;
       }
@@ -107,22 +107,22 @@ export class TableOfContentComponent implements OnInit {
   collapse(item: any) {
     item.collapseIn = !item.collapseIn;
   }
-  checkDomaine(domain: TableOfContentDomain) {
+  checkDomain(domain: TableOfContentDomain) {
     this.mapToolsService.changeCheckDomain(domain, this.tableOfContent);
     domain.services.forEach(service => {
       this.mapToolsService.refrechService(service);
     });
   }
-  checkService(service: TableOfContentServiceObject, domaine: TableOfContentDomain) {
+  checkService(service: TableOfContentServiceObject, domain: TableOfContentDomain) {
     this.mapToolsService.changeCheckService(service, this.tableOfContent);
     this.mapToolsService.refrechService(service);
-    this.mapToolsService.refrechDomainCheck(domaine);
+    this.mapToolsService.refrechDomainCheck(domain);
 
   }
-  checkNode(node: TableOfContentNode, checked: boolean, service: TableOfContentServiceObject, domaine: TableOfContentDomain) {
+  checkNode(node: TableOfContentNode, checked: boolean, service: TableOfContentServiceObject, domain: TableOfContentDomain) {
     this.mapToolsService.changeCheckNode(node, checked, this.tableOfContent);
     this.mapToolsService.refrechService(service);
-    this.mapToolsService.refrechServiceCheck(service, domaine);
+    this.mapToolsService.refrechServiceCheck(service, domain);
     // this.mapToolsService.refrechSubNodeCheck(this.mapToolsService.getParentNode(node,service));
   }
   collapseSlider(service: TableOfContentServiceObject) {
@@ -375,8 +375,8 @@ export class TableOfContentComponent implements OnInit {
   }
   sortAllTableOfContentByName() {
     this.alltableOfContent.sort((a: any, b: any) => {
-      const nameA = a.contextName.toLowerCase();
-      const nameB = b.contextName.toLowerCase();
+      const nameA = a.name.toLowerCase();
+      const nameB = b.name.toLowerCase();
       if (nameA < nameB) {
         return -1;
       }

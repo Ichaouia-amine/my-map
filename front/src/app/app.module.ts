@@ -22,6 +22,8 @@ import { UtilsService } from 'app/services/utils/utils.service';
 import { TableOfContentService } from 'app/services/table-of-content/table-of-content.service';
 import { TableOfContentComponent } from './components/navbar/table-of-content/table-of-content.component';
 import { TreeViewComponent } from './components/navbar/table-of-content/tree-view/tree-view.component';
+import { LocationService } from 'app/services/map-location/location.service';
+import { ScaleService } from 'app/services/scale/scale.service';
 export function HttpLoaderFactory(http: Http) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
@@ -50,7 +52,7 @@ export function HttpLoaderFactory(http: Http) {
   ],
   providers: [OverlayService, SettingsService, HttpService, AppShellService,
     ScreenWidthService, MapToolsService, MapOpenlayersService, LayerOpenlayersService,
-    UtilsService, TableOfContentService],
+    UtilsService, TableOfContentService, LocationService, ScaleService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

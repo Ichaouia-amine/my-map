@@ -22,7 +22,7 @@ export class TableOfContentService {
   addFunctionelAttributesForGetCapabilitiesLayer(node: TableOfContentNode, functionelLayer: TableOfContentNode,
     parent: string, service: string) {
     if (functionelLayer !== null) {
-      if (node.Name === functionelLayer.code || node.Abstract === functionelLayer.code) {
+      if (node.Name === functionelLayer.name || node.Abstract === functionelLayer.name) {
         for (const key in functionelLayer) {
           if (functionelLayer.hasOwnProperty(key)) {
             node[key] = functionelLayer[key];
@@ -42,7 +42,7 @@ export class TableOfContentService {
       for (let i = 0; i < node.Layer.length; i++) {
         if (typeof node.Layer[i] !== 'undefined') {
           this.addFunctionelAttributesForGetCapabilitiesLayer(node.Layer[i], functionelLayer,
-            typeof node.code !== 'undefined' ? node.code : node.Abstract, node.service);
+            typeof node.name !== 'undefined' ? node.name : node.Abstract, node.service);
         }
       }
     } else {
@@ -94,7 +94,7 @@ export class TableOfContentService {
           });
         } else {
           for (let i = service.layersList.length - 1; i >= 0; i--) {
-            if (service.layersList[i].code === node.code) {
+            if (service.layersList[i].name === node.name) {
               service.layersList.slice(i, 1);
             }
           }
@@ -199,7 +199,7 @@ export class TableOfContentService {
     }
   }
   getNodeByName(node: TableOfContentNode, name: string): TableOfContentNode {
-    if (node.code === name) {
+    if (node.name === name) {
       return node;
     }
     if (node.isGroup) {
@@ -349,6 +349,7 @@ export class TableOfContentService {
   }
   generateContextLayersFromTableOfContent(tableOfContent: any, advanced: boolean): any[] {
     const allLayers: any[] = [];
+      console.log(tableOfContent);
     const domains = tableOfContent.domains;
     if (domains !== undefined) {
       domains.forEach(domain => {

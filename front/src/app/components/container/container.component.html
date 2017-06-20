@@ -3,4 +3,29 @@
 <div class="global-loading">
 <app-loading [showLoading]=false></app-loading>
 </div>
-<app-map-tools></app-map-tools>
+<div id="overlay-container" class="overlay-container" [class.overlay-container-mapvisible]=isMapVisible() [hidden]=isCollapsed()>
+  <!-- desktop -->
+  <div class="overlay-header" [class.overlay-header-mapvisible]=isMapVisible()>
+    <div class="overlay-title">
+
+     <h1> {{getOverlayTitle()}}</h1>
+
+    </div>
+    <div class="overlay-header-btns">
+      <button *ngIf=isMinimizable() class="overlayaction btn btn-icon" (click)=minimizeActiveOverlay() id="btn_minimize" title="Réduire"><i class="glyphicon glyphicon-minus"></i></button>
+      <button class="overlayaction btn btn-icon" (click)=closeOverlay() id="btn_close" title="Fermer"><i class="glyphicon glyphicon-remove"></i></button>
+    </div>
+  </div>
+  <!-- mobile  sets title in navbar-->
+
+
+
+  <!-- mixte -->
+  <div class="overlay-body" [class.overlay-body-mapvisible]=isMapVisible()>
+    <!--div [hidden]="overlayMinimized('search')"><app-search-controller *ngIf="overlayInitialized('search')"></app-search-controller></div-->
+    <!--div [hidden]="overlayMinimized('toc')"><app-table-of-content *ngIf="overlayInitialized('toc')"></app-table-of-content></div-->
+    <div [hidden]="overlayMinimized('toc')"><app-table-of-content [collapse]="! overlayInitialized('toc')" *ngIf="! isFirstLoad('toc')"></app-table-of-content></div>
+    <!--div [hidden]="overlayMinimized('fdp')"><app-base-map-controller *ngIf="overlayInitialized('fdp')"></app-base-map-controller></div-->
+    <!--div [hidden]="overlayMinimized('account')"><app-account-controller *ngIf="overlayInitialized('account')"></app-account-controller></div-->
+  </div>
+</div>
